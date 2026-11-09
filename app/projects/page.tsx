@@ -5,7 +5,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { FULL_NAME } from "@/lib/config";
 import { projects } from "@/lib/projects";
 
-const description = `Projects built by ${FULL_NAME}: MotorWise, Home237, YADIMS Fabrics & Seams, WeLearn, a school management system and a booking system demo.`;
+const description = `Projects built by ${FULL_NAME}: MotorWise, Merit Leaders, Home237, YADIMS Fabrics & Seams, WeLearn, a school management system and a booking system demo.`;
 
 export const metadata: Metadata = {
   title: "Projects",

@@ -11,8 +11,10 @@ import {
   KNOWS_ABOUT,
   LOCATION,
   PERSON_ID,
+  PHONE,
   PHOTO_PATH,
   SAME_AS,
+  SECOND_CITY,
   WEBSITE_ID,
   absoluteUrl,
 } from "./config";
@@ -34,12 +36,35 @@ export function personSchema(): JsonLd {
     jobTitle: JOB_TITLE,
     description: DEFINITION_SENTENCE,
     email: `mailto:${EMAIL}`,
+    telephone: PHONE,
     address: {
       "@type": "PostalAddress",
       addressLocality: LOCATION.city,
       addressRegion: LOCATION.region,
       addressCountry: LOCATION.countryCode,
     },
+    workLocation: [
+      {
+        "@type": "Place",
+        name: `${LOCATION.city}, ${LOCATION.countryName}`,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: LOCATION.city,
+          addressRegion: LOCATION.region,
+          addressCountry: LOCATION.countryCode,
+        },
+      },
+      {
+        "@type": "Place",
+        name: `${SECOND_CITY.city}, ${LOCATION.countryName}`,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: SECOND_CITY.city,
+          addressRegion: SECOND_CITY.region,
+          addressCountry: LOCATION.countryCode,
+        },
+      },
+    ],
     nationality: {
       "@type": "Country",
       name: LOCATION.countryName,

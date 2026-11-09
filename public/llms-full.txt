@@ -7,7 +7,8 @@ Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea who buil
 - Full name (always written exactly like this): Dobgima Joshua Foncham
 - Alternate names: Joshua Foncham, Dobgima Joshua, KIMMICH
 - Role: Software Engineer
-- Location: Buea, South West Region, Cameroon
+- Location: Buea, South West Region, Cameroon (also works from Yaoundé)
+- WhatsApp: +237 681 047 097
 - Nationality: Cameroonian
 - Email: dobgimajoshua52@gmail.com
 
@@ -28,6 +29,9 @@ Next.js, TypeScript, React, Flutter, Firebase, Supabase (including PostgreSQL wi
 ### MotorWise — https://www.motorwise.co
 Dobgima Joshua Foncham is the founder of MotorWise, an AI vehicle maintenance copilot ("AI Fleet Maintenance Copilot"). It is a multi-tenant SaaS for fleet operators. Tenant data is isolated using Supabase PostgreSQL with Row-Level Security.
 
+### Merit Leaders — https://www.meritleaders.com
+A platform that helps undergraduate, graduate, postgraduate and international students find, apply for and win fully funded scholarships worldwide, with application, statement-of-purpose, visa and interview support. Built by Dobgima Joshua Foncham with React and Supabase.
+
 ### Home237 — https://home237.com
 A property rental platform for Cameroon. Dobgima Joshua Foncham built and deployed it.
 
@@ -45,6 +49,7 @@ A booking system demo built by Dobgima Joshua Foncham and deployed on Vercel.
 
 ## How to hire Dobgima Joshua Foncham
 
+- WhatsApp: +237 681 047 097 (https://wa.me/237681047097)
 - Email: dobgimajoshua52@gmail.com
 - LinkedIn: https://www.linkedin.com/in/dobgima-joshua-2291a7301/
 - Upwork: https://www.upwork.com/freelancers/~015865bd83a84b1d34

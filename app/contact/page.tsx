@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { EMAIL, FULL_NAME, PROFILES } from "@/lib/config";
+import {
+  EMAIL,
+  FULL_NAME,
+  LOCATIONS_LABEL,
+  PHONE_DISPLAY,
+  PROFILES,
+  WHATSAPP_URL,
+} from "@/lib/config";
 
-const description = `Contact ${FULL_NAME}, software engineer in Buea, Cameroon — by email, LinkedIn, Upwork or GitHub, for freelance and remote work.`;
+const description = `Contact ${FULL_NAME}, software engineer in ${LOCATIONS_LABEL} — on WhatsApp, by email, LinkedIn or Upwork, for freelance and remote work.`;
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -13,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 const channels: { label: string; href: string; detail: string }[] = [
+  { label: "WhatsApp (fastest)", href: WHATSAPP_URL, detail: PHONE_DISPLAY },
   { label: "Email", href: `mailto:${EMAIL}`, detail: EMAIL },
   {
     label: "LinkedIn",
@@ -34,9 +42,6 @@ const channels: { label: string; href: string; detail: string }[] = [
     href: PROFILES.github2,
     detail: "github.com/Dobgim",
   },
-  ...(PROFILES.whatsapp
-    ? [{ label: "WhatsApp", href: PROFILES.whatsapp, detail: "Chat on WhatsApp" }]
-    : []),
 ];
 
 export default function ContactPage() {
@@ -52,8 +57,9 @@ export default function ContactPage() {
         Contact {FULL_NAME}
       </h1>
       <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
-        I&apos;m available for freelance and remote work on web, mobile and AI
-        projects. The fastest way to reach me is email.
+        I&apos;m available for freelance and remote work on web and mobile
+        projects, working from {LOCATIONS_LABEL}. The fastest way to reach me is
+        WhatsApp.
       </p>
       <ul className="mt-8 max-w-xl space-y-4">
         {channels.map((channel) => (

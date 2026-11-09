@@ -13,12 +13,17 @@ export const FULL_NAME = "Dobgima Joshua Foncham";
 export const ALTERNATE_NAMES = ["Joshua Foncham", "Dobgima Joshua", "KIMMICH"];
 export const JOB_TITLE = "Software Engineer";
 export const EMAIL = "dobgimajoshua52@gmail.com";
+export const PHONE = "+237681047097";
+export const PHONE_DISPLAY = "+237 681 047 097";
 export const LOCATION = {
   city: "Buea",
   region: "South West Region",
   countryCode: "CM",
   countryName: "Cameroon",
 };
+/** Other city he works from. */
+export const SECOND_CITY = { city: "Yaoundé", region: "Centre Region" };
+export const LOCATIONS_LABEL = "Buea & Yaoundé, Cameroon";
 
 /** The canonical definition sentence. Used word for word in the About
  *  opening, meta description base, llms.txt and schema description. */
@@ -27,20 +32,20 @@ export const DEFINITION_SENTENCE =
 
 export const PHOTO_PATH = "/dobgima-joshua-foncham.png";
 
+const WHATSAPP_MESSAGE =
+  "Hello Joshua, I found your website and I'd like to work with you on a project.";
+export const WHATSAPP_URL = `https://wa.me/${PHONE.replace("+", "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
 export const PROFILES = {
   github1: "https://github.com/dobgimajoshua",
   github2: "https://github.com/Dobgim",
   linkedin: "https://www.linkedin.com/in/dobgima-joshua-2291a7301/",
   upwork:
     "https://www.upwork.com/freelancers/~015865bd83a84b1d34?mp_source=share",
-  // [PLACEHOLDER: WhatsApp link, e.g. "https://wa.me/2376XXXXXXXX"]
-  whatsapp: "",
 } as const;
 
-/** All non-empty profile URLs, for sameAs and rel="me" links. */
-export const SAME_AS: string[] = Object.values(PROFILES).filter((u) =>
-  Boolean(u),
-);
+/** Identity profiles, for sameAs and rel="me" links. */
+export const SAME_AS: string[] = Object.values(PROFILES);
 
 export const KNOWS_ABOUT = [
   "Next.js",
@@ -53,6 +58,9 @@ export const KNOWS_ABOUT = [
   "AI automation",
   "Software Engineering",
 ];
+
+/** Stack shown in visible copy on the homepage. */
+export const CORE_STACK = ["Next.js", "TypeScript", "React", "Flutter", "Supabase", "Firebase"];
 
 export const EDUCATION = {
   degree: "BTech in Software Engineering",

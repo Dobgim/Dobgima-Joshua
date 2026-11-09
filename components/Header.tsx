@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FULL_NAME } from "@/lib/config";
+import HeaderShell from "./HeaderShell";
 import ThemeToggle from "./ThemeToggle";
 import MobileMenu from "./MobileMenu";
 
@@ -14,22 +15,22 @@ const nav = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white/90 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/90">
+    <HeaderShell>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
         <Link
           href="/"
-          className="min-w-0 truncate text-[15px] font-semibold tracking-tight sm:text-base text-zinc-900 hover:text-sky-700 dark:text-zinc-100 dark:hover:text-sky-400"
+          className="min-w-0 truncate text-[15px] font-semibold tracking-tight text-zinc-900 transition-colors hover:text-sky-700 sm:text-base dark:text-zinc-100 dark:hover:text-sky-400"
         >
           {FULL_NAME}
         </Link>
         <div className="flex shrink-0 items-center gap-2">
           <nav aria-label="Main navigation" className="hidden lg:block">
-            <ul className="flex items-center gap-2 text-sm">
+            <ul className="flex items-center gap-1 text-sm">
               {nav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="rounded-md px-2 py-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+                    className="nav-link relative rounded-md px-3 py-2 text-zinc-700 transition-colors hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -41,6 +42,6 @@ export default function Header() {
           <MobileMenu />
         </div>
       </div>
-    </header>
+    </HeaderShell>
   );
 }

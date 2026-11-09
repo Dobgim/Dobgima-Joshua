@@ -43,6 +43,29 @@ export const projects: Project[] = [
       "Live at motorwise.co. [PLACEHOLDER: current status/traction, e.g. pilot customers or active fleets — no numbers invented]",
   },
   {
+    slug: "merit-leaders",
+    name: "Merit Leaders",
+    tagline: "Scholarship and fellowship platform for international students.",
+    role: "Developer",
+    liveUrl: "https://www.meritleaders.com",
+    featured: true,
+    schemaType: "SoftwareApplication",
+    applicationCategory: "EducationalApplication",
+    techStack: ["React", "Vite", "Supabase"],
+    problem:
+      "Students looking for fully funded scholarships abroad face scattered information and complex applications, and often lack guidance on statements of purpose, visas and interviews.",
+    whatIBuilt:
+      "Merit Leaders, a platform that helps undergraduate, graduate, postgraduate and international students find, apply for and win fully funded scholarships worldwide, with expert application, SOP, visa and interview support.",
+    myRole:
+      "Dobgima Joshua Foncham built the Merit Leaders web platform. [PLACEHOLDER: confirm your exact role, e.g. sole developer or co-founder]",
+    keyFeatures: [
+      "Scholarship and fellowship matching for students at every level",
+      "End-to-end application support: SOP, visa and interview preparation",
+      "Supabase backend",
+    ],
+    result: "Live at meritleaders.com.",
+  },
+  {
     slug: "home237",
     name: "Home237",
     tagline: "Property rental platform for Cameroon.",

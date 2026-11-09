@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import {
   DEFINITION_SENTENCE,
   DOMAIN,
@@ -42,7 +43,7 @@ const themeScript = `
 try {
   document.documentElement.classList.remove('no-js');
   var t = localStorage.getItem('theme');
-  if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  if (t === 'dark') {
     document.documentElement.classList.add('dark');
   }
 } catch (e) {}
@@ -64,10 +65,11 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Header />
-        <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-4 py-10">
+        <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-4 py-10">
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

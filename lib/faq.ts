@@ -10,7 +10,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "What does Dobgima Joshua Foncham do?",
     answer:
-      "Dobgima Joshua Foncham is a software engineer who builds web, mobile and AI products with Next.js, TypeScript, React, Flutter, Supabase and Firebase. He founded MotorWise and YADIMS Fabrics & Seams, built the property rental platform Home237, and is co-building the EdTech startup WeLearn.",
+      "Dobgima Joshua Foncham is a software engineer who builds web, mobile and AI products with Next.js, TypeScript, React, Flutter, Supabase and Firebase. He founded MotorWise and YADIMS Fabrics & Seams, built the property rental platform Home237 and the scholarship platform Merit Leaders, and is co-building the EdTech startup WeLearn.",
   },
   {
     question: "What is MotorWise and who founded it?",
@@ -20,7 +20,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Where is Dobgima Joshua Foncham based?",
     answer:
-      "Dobgima Joshua Foncham is based in Buea, in the South West Region of Cameroon. He works remotely with clients and employers internationally, including ConsultStudyBridge, an Africa-to-Japan education and travel consultancy.",
+      "Dobgima Joshua Foncham is based in Buea, in the South West Region of Cameroon, and also works from Yaoundé. He works remotely with clients and employers internationally, including ConsultStudyBridge, an Africa-to-Japan education and travel consultancy.",
   },
   {
     question: "What technologies does Dobgima Joshua Foncham use?",
@@ -35,6 +35,6 @@ export const faqItems: FaqItem[] = [
   {
     question: "How can I hire Dobgima Joshua Foncham?",
     answer:
-      "Dobgima Joshua Foncham can be reached by email at dobgimajoshua52@gmail.com, on LinkedIn, or through his Upwork profile. He is available for freelance and remote work on web, mobile and AI projects.",
+      "Dobgima Joshua Foncham can be reached on WhatsApp at +237 681 047 097, by email at dobgimajoshua52@gmail.com, on LinkedIn, or through his Upwork profile. He is available for freelance and remote work on web and mobile projects, in Cameroon and internationally.",
   },
 ];
