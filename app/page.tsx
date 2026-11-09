@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import ProjectCard from "@/components/ProjectCard";
+import ReviewCard from "@/components/ReviewCard";
+import { getApprovedReviews } from "@/lib/reviews";
 import {
   DEFINITION_SENTENCE,
   EDUCATION,
@@ -30,7 +32,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export const revalidate = 600;
+
+export default async function HomePage() {
+  const reviews = await getApprovedReviews();
   const featured = projects.filter((p) => p.featured);
   const others = projects.filter((p) => !p.featured);
 
@@ -212,6 +217,34 @@ export default function HomePage() {
           >
             All projects →
           </Link>
+        </p>
+      </section>
+
+      {/* Client reviews */}
+      <section aria-labelledby="reviews-heading" className="border-t border-zinc-200 py-10 dark:border-zinc-800">
+        <h2 id="reviews-heading" className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+          What clients say
+        </h2>
+        {reviews.length > 0 && (
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {reviews.slice(0, 3).map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
+          </div>
+        )}
+        <p className="mt-5 text-zinc-600 dark:text-zinc-400">
+          {reviews.length > 0 ? (
+            <Link href="/reviews" className="font-medium text-sky-700 underline-offset-4 hover:underline dark:text-sky-400">
+              Read all reviews →
+            </Link>
+          ) : (
+            <>
+              Worked with me?{" "}
+              <Link href="/reviews#leave-a-review" className="font-medium text-sky-700 underline-offset-4 hover:underline dark:text-sky-400">
+                Leave a review →
+              </Link>
+            </>
+          )}
         </p>
       </section>
 

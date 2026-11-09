@@ -26,6 +26,20 @@ npm run build    # production build (all pages prerendered)
 
 Posts with `draft: true` show on the site with a Draft badge but are **excluded** from the sitemap, RSS and search indexing (noindex). Flip to `draft: false` to publish.
 
+## Client reviews (/reviews)
+
+Clients submit reviews through the form on `/reviews`. Each review is saved as **pending** and only appears on the site after you approve it.
+
+One-time setup:
+1. Create a free project at https://supabase.com (or reuse an existing one).
+2. In the Supabase **SQL Editor**, run `supabase/reviews.sql`.
+3. From **Project Settings → API**, copy the project URL and the `anon` public key.
+4. Add them as `SUPABASE_URL` and `SUPABASE_ANON_KEY` in Vercel → Settings → Environment Variables (and in `.env.local` for local dev; see `.env.example`). Redeploy.
+
+Approving a review: Supabase → **Table Editor → reviews** → change `status` from `pending` to `approved` (or `rejected`). It shows on `/reviews` and the homepage within about 10 minutes. The reviewer's email is stored so you can confirm they're a real client, but it's never readable from the website.
+
+Until the env vars are set, the page shows "No reviews yet" and the form asks people to email their review instead.
+
 ## Deploy to Vercel
 
 1. Push this repo to GitHub.

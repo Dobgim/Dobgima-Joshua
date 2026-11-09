@@ -21,6 +21,36 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Star rating input: DOM order is 5→1, displayed reversed so 1 is on the left.
+   A checked/hovered star lights up itself and every lower star (later siblings). */
+.star-rating {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 0.125rem;
+}
+.star-rating label {
+  cursor: pointer;
+  color: var(--color-zinc-300);
+  border-radius: 0.25rem;
+  transition: color 0.15s;
+}
+.dark .star-rating label {
+  color: var(--color-zinc-700);
+}
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.dark .star-rating input:checked ~ label,
+.dark .star-rating label:hover,
+.dark .star-rating label:hover ~ label {
+  color: var(--color-amber-400);
+}
+.star-rating input:focus-visible + label {
+  outline: 2px solid var(--color-sky-600);
+  outline-offset: 2px;
+}
+
 /* Simple typographic defaults for MDX/blog prose. */
 .prose-basic h2 {
   font-size: 1.375rem;
