@@ -5,6 +5,7 @@ import JsonLd from "@/components/JsonLd";
 import ProjectCard from "@/components/ProjectCard";
 import ReviewCard from "@/components/ReviewCard";
 import { WhatsAppIcon } from "@/components/WhatsAppButton";
+import { techLogos } from "@/lib/tech-logos";
 import {
   DEFINITION_SENTENCE,
   EDUCATION,
@@ -52,6 +53,14 @@ const services = [
   },
 ];
 
+function ArrowRight({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  );
+}
+
 const sectionTitle =
   "text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50";
 const eyebrow =
@@ -67,115 +76,88 @@ export default async function HomePage() {
       <JsonLd data={[personSchema(), webSiteSchema()]} />
 
       {/* ───────── Hero ───────── */}
-      <section className="relative isolate -mt-10 pb-16 pt-10 sm:pt-16 lg:pb-24">
-        {/* Soft background accents */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-visible">
-          <div className="absolute -top-24 left-1/2 h-[28rem] w-[28rem] -translate-x-[80%] rounded-full bg-sky-200/50 blur-3xl dark:bg-sky-900/30" />
-          <div className="absolute right-0 top-32 h-80 w-80 rounded-full bg-amber-200/50 blur-3xl dark:bg-amber-900/20" />
-          <div
-            className="absolute inset-0 opacity-[0.35] dark:opacity-[0.15]"
-            style={{
-              backgroundImage: "radial-gradient(rgb(148 163 184 / 0.5) 1px, transparent 1px)",
-              backgroundSize: "22px 22px",
-              maskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
-              WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
-            }}
-          />
-        </div>
-
-        <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
+      <section className="-mt-10 border-b border-zinc-200 pb-16 pt-12 sm:pt-20 lg:pb-20 dark:border-zinc-800">
+        <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-10">
           {/* Text */}
-          <div className="order-2 text-center lg:order-1 lg:text-left">
+          <div className="order-2 text-center lg:order-1 lg:col-span-7 lg:text-left">
             <p
-              className="reveal inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-300"
+              className="reveal flex items-center justify-center gap-3 text-sm font-medium tracking-wide text-zinc-500 lg:justify-start dark:text-zinc-400"
               style={d(0)}
             >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-              Available for new projects
-            </p>
-
-            <p className={`reveal mt-6 ${eyebrow}`} style={d(100)}>
+              <span aria-hidden="true" className="hidden h-px w-8 bg-zinc-400 lg:block dark:bg-zinc-600" />
               Software Engineer · {LOCATIONS_LABEL}
             </p>
 
             <h1
-              className="reveal mt-4 text-5xl font-extrabold leading-[1.05] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white"
-              style={d(200)}
+              className="reveal mt-6 text-5xl font-bold leading-[1.02] tracking-[-0.035em] text-zinc-950 sm:text-6xl lg:text-7xl dark:text-white"
+              style={d(80)}
             >
-              Dobgima Joshua{" "}
-              <span className="text-shimmer bg-gradient-to-r from-sky-600 via-amber-500 to-sky-600 bg-clip-text text-transparent">
-                Foncham
-              </span>
+              Dobgima Joshua <br className="hidden sm:block" />
+              Foncham<span className="text-sky-700 dark:text-sky-400">.</span>
             </h1>
 
             <p
-              className="reveal mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 sm:text-xl lg:mx-0 dark:text-zinc-400"
-              style={d(320)}
+              className="reveal mx-auto mt-7 max-w-xl text-lg leading-relaxed text-zinc-600 sm:text-xl lg:mx-0 dark:text-zinc-400"
+              style={d(160)}
             >
-              I design and build fast, reliable web and mobile applications that
-              help businesses launch, grow and serve their customers better — from
-              the first idea to a polished product in production.
+              I build web and mobile products for businesses — clean, fast and
+              dependable, from the first idea to a product your customers use
+              every day.
             </p>
 
             <div
-              className="reveal mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
-              style={d(440)}
+              className="reveal mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start"
+              style={d(240)}
             >
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener"
-                className="group inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-[#25D366] px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-green-600/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1ebe5a] hover:shadow-xl hover:shadow-green-600/30 sm:w-auto"
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-lg bg-zinc-950 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950 sm:w-auto dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
               >
-                <WhatsAppIcon className="h-5 w-5" />
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#25D366] text-white">
+                  <WhatsAppIcon className="h-3.5 w-3.5" />
+                </span>
                 Apply to work with me
-                <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
               <Link
                 href="/projects"
-                className="inline-flex w-full items-center justify-center rounded-full border border-zinc-300 bg-white/70 px-7 py-3.5 text-base font-semibold text-zinc-800 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:shadow-md sm:w-auto dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-100"
+                className="group inline-flex items-center gap-2 px-2 py-3 text-base font-semibold text-zinc-800 dark:text-zinc-200"
               >
-                View my work
+                View selected work
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
 
             <dl
-              className="reveal mx-auto mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-zinc-200 pt-8 lg:mx-0 dark:border-zinc-800"
-              style={d(560)}
+              className="reveal mx-auto mt-14 grid max-w-xl grid-cols-3 divide-x divide-zinc-200 border-t border-zinc-200 pt-8 text-left lg:mx-0 dark:divide-zinc-800 dark:border-zinc-800"
+              style={d(320)}
             >
-              <div>
-                <dt className="sr-only">Projects</dt>
-                <dd className="text-lg font-bold leading-tight text-zinc-900 sm:text-2xl dark:text-white">{projects.length}+</dd>
-                <dd className="mt-1 text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">Projects built</dd>
+              <div className="flex flex-col-reverse justify-end pr-4">
+                <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Projects</dt>
+                <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white">
+                  {String(projects.length).padStart(2, "0")}
+                </dd>
               </div>
-              <div>
-                <dt className="sr-only">Company</dt>
-                <dd className="text-lg font-bold leading-tight text-zinc-900 sm:text-2xl dark:text-white">MotorWise</dd>
-                <dd className="mt-1 text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">Founder</dd>
+              <div className="flex flex-col-reverse justify-end px-4">
+                <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Businesses founded</dt>
+                <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white">02</dd>
               </div>
-              <div>
-                <dt className="sr-only">Platforms</dt>
-                <dd className="text-lg font-bold leading-tight text-zinc-900 sm:text-2xl dark:text-white">Web + Mobile</dd>
-                <dd className="mt-1 text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">End to end</dd>
+              <div className="flex flex-col-reverse justify-end pl-4">
+                <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Degree</dt>
+                <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white">BTech</dd>
               </div>
             </dl>
           </div>
 
-          {/* Portrait — borderless organic shape */}
-          <div className="reveal-scale order-1 flex justify-center lg:order-2" style={d(150)}>
-            <div className="portrait-float relative">
+          {/* Portrait — static arch, no border */}
+          <div className="reveal order-1 flex justify-center lg:order-2 lg:col-span-5 lg:justify-end" style={d(120)}>
+            <figure className="relative w-64 sm:w-80 lg:w-[22rem]">
               <div
                 aria-hidden="true"
-                className="portrait-ring absolute -inset-6 rounded-full opacity-70 blur-2xl"
-                style={{
-                  background:
-                    "conic-gradient(from 0deg, #38bdf8, #fbbf24, #34d399, #38bdf8)",
-                }}
+                className="absolute inset-0 -translate-x-4 translate-y-4 rounded-b-[1.75rem] rounded-t-full bg-sky-100 dark:bg-sky-950/60"
               />
-              <div className="portrait-blob relative h-72 w-72 overflow-hidden shadow-2xl shadow-sky-900/20 sm:h-96 sm:w-96">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-b-[1.75rem] rounded-t-full bg-zinc-900">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={PHOTO_PATH}
@@ -183,30 +165,50 @@ export default async function HomePage() {
                   width={1080}
                   height={1080}
                   fetchPriority="high"
-                  className="h-full w-full scale-110 object-cover object-[60%_40%]"
+                  className="h-full w-full object-cover object-[68%_50%]"
                 />
               </div>
-
-              <span
-                className="float-badge absolute -left-4 top-10 rounded-2xl bg-white/90 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-lg ring-1 ring-zinc-200 backdrop-blur sm:-left-10 dark:bg-zinc-900/90 dark:text-zinc-100 dark:ring-zinc-700"
-                style={d(0)}
-              >
-                ⚡ Next.js · React
-              </span>
-              <span
-                className="float-badge absolute -right-2 top-1/2 rounded-2xl bg-white/90 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-lg ring-1 ring-zinc-200 backdrop-blur sm:-right-8 dark:bg-zinc-900/90 dark:text-zinc-100 dark:ring-zinc-700"
-                style={d(1500)}
-              >
-                📱 Flutter apps
-              </span>
-              <span
-                className="float-badge absolute bottom-6 left-2 rounded-2xl bg-white/90 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-lg ring-1 ring-zinc-200 backdrop-blur sm:-left-4 dark:bg-zinc-900/90 dark:text-zinc-100 dark:ring-zinc-700"
-                style={d(3000)}
-              >
-                🔒 Supabase · Firebase
-              </span>
-            </div>
+              <figcaption className="absolute -bottom-7 left-1/2 flex -translate-x-1/2 items-center gap-3 whitespace-nowrap rounded-xl bg-white px-4 py-3 text-left shadow-[0_12px_32px_-12px_rgb(0_0_0/0.25)] ring-1 ring-zinc-200 lg:-left-10 lg:translate-x-0 dark:bg-zinc-900 dark:ring-zinc-800">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-[18px] w-[18px]">
+                    <rect x="3" y="7" width="18" height="13" rx="2" />
+                    <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18" />
+                  </svg>
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-zinc-950 dark:text-white">Founder, MotorWise</span>
+                  <span className="block text-xs text-zinc-500 dark:text-zinc-400">Fleet maintenance software</span>
+                </span>
+              </figcaption>
+            </figure>
           </div>
+        </div>
+
+        {/* Technologies */}
+        <div className="reveal mt-20 text-center" style={d(400)}>
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+            Technologies I work with
+          </p>
+          <ul className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-10 gap-y-5">
+            {techLogos.map((logo) => (
+              <li
+                key={logo.key}
+                className="group flex items-center gap-2.5 text-zinc-400 transition-colors duration-300 dark:text-zinc-500"
+                style={{ "--brand": logo.color } as CSSProperties}
+              >
+                <svg
+                  role="img"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-6 w-6 transition-colors duration-300 group-hover:text-[var(--brand)] dark:group-hover:text-zinc-100"
+                >
+                  <path d={logo.d} />
+                </svg>
+                <span className="text-sm font-medium text-zinc-600 dark:text-zinc-300">{logo.label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -257,7 +259,7 @@ export default async function HomePage() {
           href="/about"
           className="mt-8 inline-flex items-center gap-1 font-semibold text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
         >
-          More about me <span aria-hidden="true">→</span>
+          More about me <ArrowRight />
         </Link>
       </section>
 
@@ -290,7 +292,7 @@ export default async function HomePage() {
           href="/projects"
           className="mt-8 inline-flex items-center gap-1 font-semibold text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
         >
-          All projects <span aria-hidden="true">→</span>
+          All projects <ArrowRight />
         </Link>
       </section>
 
@@ -311,7 +313,7 @@ export default async function HomePage() {
               href="/reviews"
               className="mt-8 inline-flex items-center gap-1 font-semibold text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
             >
-              Read all reviews <span aria-hidden="true">→</span>
+              Read all reviews <ArrowRight />
             </Link>
           </>
         ) : (
@@ -321,7 +323,7 @@ export default async function HomePage() {
               href="/reviews#leave-a-review"
               className="font-semibold text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
             >
-              Leave a review →
+              Leave a review
             </Link>
           </p>
         )}

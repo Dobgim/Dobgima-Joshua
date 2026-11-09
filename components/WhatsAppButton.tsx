@@ -19,7 +19,7 @@ export default function WhatsAppButton() {
       className="wa-float group fixed bottom-5 right-5 z-50 flex items-center gap-3 sm:bottom-7 sm:right-7"
     >
       <span className="wa-label hidden rounded-full bg-white px-4 py-2 text-sm font-semibold text-zinc-800 shadow-lg ring-1 ring-zinc-200 sm:block dark:bg-zinc-900 dark:text-zinc-100 dark:ring-zinc-700">
-        Let&apos;s work together 👋
+        Let&apos;s work together
       </span>
       <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-green-600/30 transition-transform duration-300 group-hover:scale-110">
         <span aria-hidden="true" className="wa-ping absolute inset-0 rounded-full bg-[#25D366]" />
