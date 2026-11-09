@@ -1,0 +1,44 @@
+---
+title: "Accepting MTN MoMo and Orange Money in a Next.js app"
+description: "Draft outline: integrating Cameroon's two mobile money rails — MTN Mobile Money and Orange Money — into a Next.js application."
+date: "2026-11-09"
+tags: ["Next.js", "Payments", "MTN MoMo", "Orange Money", "Cameroon"]
+draft: true
+---
+
+> **Draft outline.** Headings and notes only — to be written.
+
+## Why mobile money matters in Cameroon
+
+- Card penetration vs mobile money usage locally
+- What users actually expect at checkout
+
+## The two rails
+
+- MTN MoMo API: sandbox, API user/key provisioning, collections vs disbursements
+- Orange Money: [NOTE: which integration path was used — Orange Developer API, aggregator, or USSD push]
+- Aggregators as an alternative (and their trade-offs) [NOTE: name only ones actually evaluated]
+
+## Architecture in Next.js
+
+- Server-side route handlers for payment initiation (never from the client)
+- Webhook/callback handling and verifying payment status
+- Storing payment state: pending → success/failed, idempotency
+
+## The payment flow, step by step
+
+- Collecting the phone number and operator
+- USSD push prompt on the customer's phone
+- Polling vs callbacks for confirmation
+- [NOTE: real sequence diagram from a project that shipped this]
+
+## Gotchas
+
+- Sandbox vs production differences
+- Timeouts when the customer doesn't confirm
+- [NOTE: fill with real issues hit in production]
+
+## Links
+
+- About me: /about
+- My projects: /projects

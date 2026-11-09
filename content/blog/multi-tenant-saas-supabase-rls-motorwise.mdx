@@ -1,0 +1,42 @@
+---
+title: "How I built a multi-tenant SaaS with Supabase Row-Level Security (MotorWise)"
+description: "Draft outline: how MotorWise isolates fleet-operator tenants in one Supabase PostgreSQL database using Row-Level Security."
+date: "2026-11-09"
+tags: ["Supabase", "PostgreSQL", "SaaS", "MotorWise"]
+draft: true
+---
+
+> **Draft outline.** Headings and notes only — to be written.
+
+## Why multi-tenant, and why RLS
+
+- What MotorWise is (AI fleet maintenance copilot) and why fleet operators are natural tenants
+- Options considered: database-per-tenant vs schema-per-tenant vs shared tables with RLS
+- Why shared tables + RLS fit a solo-founder SaaS
+
+## The tenant model
+
+- [NOTE: describe the actual tables — organizations/tenants, memberships, vehicles, etc.]
+- How every tenant-owned table carries a tenant id
+- Where the tenant id comes from at request time (auth JWT / session)
+
+## Writing the RLS policies
+
+- Enabling RLS per table
+- Select/insert/update/delete policies keyed on the tenant id
+- [NOTE: include 1–2 real policy snippets from MotorWise, scrubbed]
+- Common mistakes (forgetting to enable RLS, policies that leak on joins)
+
+## Testing tenant isolation
+
+- How to prove tenant A can never read tenant B
+- [NOTE: describe the actual test approach used]
+
+## What I'd do differently
+
+- [NOTE: honest lessons learned — fill in]
+
+## Links
+
+- MotorWise: https://www.motorwise.co
+- About me: /about

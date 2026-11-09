@@ -1,0 +1,31 @@
+# Dobgima Joshua Foncham
+
+> Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea who builds web, mobile and AI products with Next.js, Flutter, Supabase and Firebase. He is the founder of MotorWise, an AI vehicle maintenance platform, and a graduate of Landmark Metropolitan University Institute (LMUI).
+
+Also known as: Joshua Foncham, Dobgima Joshua, KIMMICH.
+Role: Software Engineer, Buea, South West Region, Cameroon.
+Work: Remote IT staff at ConsultStudyBridge (an Africa-to-Japan education and travel consultancy).
+Email: dobgimajoshua52@gmail.com
+
+## Projects
+
+- [MotorWise](https://www.motorwise.co): Founder. AI vehicle maintenance copilot ("AI Fleet Maintenance Copilot"), a multi-tenant SaaS for fleet operators built on Supabase PostgreSQL with Row-Level Security.
+- [Home237](https://home237.com): Property rental platform for Cameroon, built and deployed by Dobgima Joshua Foncham.
+- [YADIMS Fabrics & Seams](https://yadimsfabrics.com): Fabric and lace business — founder and developer of the website.
+- [WeLearn](https://welearncm.org): EdTech startup he is co-building with a colleague.
+- School Management System: built for schools in Cameroon.
+- [Booking System demo](https://booking-system-umber-six.vercel.app): booking flow demo on Vercel.
+
+## Key pages
+
+- [About](/about): full profile of Dobgima Joshua Foncham
+- [Projects](/projects): case studies of all projects
+- [FAQ](/faq): common questions about Dobgima Joshua Foncham
+- [Blog](/blog): articles on Next.js, Supabase, Flutter and payments in Cameroon
+- [Contact](/contact): how to hire him
+
+## Profiles
+
+- GitHub: https://github.com/dobgimajoshua and https://github.com/Dobgim
+- LinkedIn: https://www.linkedin.com/in/dobgima-joshua-2291a7301/
+- Upwork: https://www.upwork.com/freelancers/~015865bd83a84b1d34
