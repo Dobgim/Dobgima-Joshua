@@ -10,7 +10,7 @@ import {
   WHATSAPP_URL,
 } from "@/lib/config";
 
-const description = `Contact ${FULL_NAME}, software engineer in ${LOCATIONS_LABEL} — on WhatsApp, by email, LinkedIn or Upwork, for freelance and remote work.`;
+const description = `Contact ${FULL_NAME}, software engineer in ${LOCATIONS_LABEL}. Reach him on WhatsApp, by email, LinkedIn or Upwork, for freelance and remote work.`;
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -61,11 +61,12 @@ export default function ContactPage() {
         projects, working from {LOCATIONS_LABEL}. The fastest way to reach me is
         WhatsApp.
       </p>
-      <ul className="mt-8 max-w-xl space-y-4">
+      <ul data-reveal-group className="mt-8 max-w-xl space-y-4">
         {channels.map((channel) => (
           <li
             key={channel.label}
-            className="rounded-xl border border-zinc-200 p-4 dark:border-zinc-800"
+            data-reveal
+            className="lift rounded-xl border border-zinc-200 p-4 dark:border-zinc-800"
           >
             <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
               {channel.label}

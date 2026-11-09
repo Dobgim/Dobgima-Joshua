@@ -21,7 +21,7 @@ export function Stars({ rating }: { rating: number }) {
 export default function ReviewCard({ review }: { review: Review }) {
   const date = review.created_at.slice(0, 10);
   return (
-    <figure className="flex h-full flex-col rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+    <figure data-reveal className="lift flex h-full flex-col rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
       <Stars rating={review.rating} />
       <blockquote className="mt-3 flex-1 whitespace-pre-line text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
         “{review.body}”

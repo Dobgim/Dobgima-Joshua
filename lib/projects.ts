@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     slug: "motorwise",
     name: "MotorWise",
-    tagline: "AI Fleet Maintenance Copilot — an AI vehicle maintenance platform.",
+    tagline: "Fleet maintenance platform for vehicle operators.",
     role: "Founder",
     liveUrl: "https://www.motorwise.co",
     featured: true,
@@ -40,7 +40,7 @@ export const projects: Project[] = [
       "AI-assisted vehicle maintenance guidance",
     ],
     result:
-      "Live at motorwise.co. [PLACEHOLDER: current status/traction, e.g. pilot customers or active fleets — no numbers invented]",
+      "Live at motorwise.co. [PLACEHOLDER: current status/traction, e.g. pilot customers or active fleets, no numbers invented]",
   },
   {
     slug: "merit-leaders",

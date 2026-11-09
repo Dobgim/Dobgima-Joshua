@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  const description = `${project.name} — ${project.tagline} Case study by ${FULL_NAME}.`;
+  const description = `${project.name}: ${project.tagline} Case study by ${FULL_NAME}.`;
   return {
     title: `${project.name} case study`,
     description,
     alternates: { canonical: `/projects/${slug}` },
     openGraph: {
-      title: `${project.name} — case study by ${FULL_NAME}`,
+      title: `${project.name}, a case study by ${FULL_NAME}`,
       description,
       url: `/projects/${slug}`,
     },
@@ -42,7 +42,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mt-8">
+    <section data-reveal className="mt-8">
       <h2 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
         {title}
       </h2>

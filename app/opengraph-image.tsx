@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { FULL_NAME, JOB_TITLE } from "@/lib/config";
 
-export const alt = `${FULL_NAME} — ${JOB_TITLE}, Buea, Cameroon`;
+export const alt = `${FULL_NAME}, ${JOB_TITLE}, Buea, Cameroon`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

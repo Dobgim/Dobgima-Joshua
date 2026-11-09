@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="max-w-3xl">
         {post.draft && (
           <p className="mb-4 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
-            Draft outline — not published yet
+            Draft outline, not published yet
           </p>
         )}
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">

@@ -3,7 +3,7 @@ import type { Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="lift flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+    <article data-reveal className="lift flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
       <h3 className="text-lg font-semibold tracking-tight">
         <Link
           href={`/projects/${project.slug}`}

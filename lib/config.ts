@@ -75,7 +75,7 @@ export const EMPLOYER = {
   role: "Remote IT staff",
 };
 
-export const SITE_NAME = `${FULL_NAME} — ${JOB_TITLE}`;
+export const SITE_NAME = `${FULL_NAME}, ${JOB_TITLE}`;
 export const HOME_TITLE = `${FULL_NAME} - Software Engineer, Buea, Cameroon`;
 
 export function absoluteUrl(path: string): string {

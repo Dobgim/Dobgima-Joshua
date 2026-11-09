@@ -6,6 +6,7 @@ import ProjectCard from "@/components/ProjectCard";
 import ReviewCard from "@/components/ReviewCard";
 import { WhatsAppIcon } from "@/components/WhatsAppButton";
 import { techLogos } from "@/lib/tech-logos";
+import CountUp from "@/components/CountUp";
 import {
   DEFINITION_SENTENCE,
   EDUCATION,
@@ -14,7 +15,6 @@ import {
   FULL_NAME,
   HOME_TITLE,
   LOCATIONS_LABEL,
-  PHOTO_PATH,
   WHATSAPP_URL,
 } from "@/lib/config";
 import { projects } from "@/lib/projects";
@@ -36,7 +36,7 @@ const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 const services = [
   {
     title: "Web applications",
-    body: "Fast, search-friendly websites and web apps built with Next.js, React and TypeScript — from landing pages to full platforms.",
+    body: "Fast, search-friendly websites and web apps built with Next.js, React and TypeScript, from landing pages to full platforms.",
     icon: (
       <path d="M3 5h18v12H3zM8 21h8M12 17v4" />
     ),
@@ -81,10 +81,9 @@ export default async function HomePage() {
           {/* Text */}
           <div className="order-2 text-center lg:order-1 lg:col-span-7 lg:text-left">
             <p
-              className="reveal flex items-center justify-center gap-3 text-sm font-medium tracking-wide text-zinc-500 lg:justify-start dark:text-zinc-400"
+              className="reveal text-base font-semibold text-sky-700 sm:text-lg dark:text-sky-400"
               style={d(0)}
             >
-              <span aria-hidden="true" className="hidden h-px w-8 bg-zinc-400 lg:block dark:bg-zinc-600" />
               Software Engineer · {LOCATIONS_LABEL}
             </p>
 
@@ -100,8 +99,8 @@ export default async function HomePage() {
               className="reveal mx-auto mt-7 max-w-xl text-lg leading-relaxed text-zinc-600 sm:text-xl lg:mx-0 dark:text-zinc-400"
               style={d(160)}
             >
-              I build web and mobile products for businesses — clean, fast and
-              dependable, from the first idea to a product your customers use
+              I build clean, fast and dependable web and mobile products for
+              businesses, from the first idea to a product your customers use
               every day.
             </p>
 
@@ -113,7 +112,7 @@ export default async function HomePage() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener"
-                className="group inline-flex w-full items-center justify-center gap-3 rounded-lg bg-zinc-950 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950 sm:w-auto dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+                className="btn-lift group inline-flex w-full items-center justify-center gap-3 rounded-lg bg-zinc-950 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950 sm:w-auto dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
               >
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#25D366] text-white">
                   <WhatsAppIcon className="h-3.5 w-3.5" />
@@ -124,7 +123,7 @@ export default async function HomePage() {
                 href="/projects"
                 className="group inline-flex items-center gap-2 px-2 py-3 text-base font-semibold text-zinc-800 dark:text-zinc-200"
               >
-                View selected work
+                <span className="link-draw">View selected work</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
@@ -136,12 +135,12 @@ export default async function HomePage() {
               <div className="flex flex-col-reverse justify-end pr-4">
                 <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Projects</dt>
                 <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white">
-                  {String(projects.length).padStart(2, "0")}
+                  <CountUp to={projects.length} />
                 </dd>
               </div>
               <div className="flex flex-col-reverse justify-end px-4">
                 <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Businesses founded</dt>
-                <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white">02</dd>
+                <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white"><CountUp to={2} /></dd>
               </div>
               <div className="flex flex-col-reverse justify-end pl-4">
                 <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Degree</dt>
@@ -150,25 +149,26 @@ export default async function HomePage() {
             </dl>
           </div>
 
-          {/* Portrait — static arch, no border */}
+          {/* Portrait: background removed, sits directly on the page */}
           <div className="reveal order-1 flex justify-center lg:order-2 lg:col-span-5 lg:justify-end" style={d(120)}>
-            <figure className="relative w-64 sm:w-80 lg:w-[22rem]">
+            <figure className="portrait-zoom relative w-72 sm:w-96 lg:w-[26rem]">
               <div
                 aria-hidden="true"
-                className="absolute inset-0 -translate-x-4 translate-y-4 rounded-b-[1.75rem] rounded-t-full bg-sky-100 dark:bg-sky-950/60"
+                className="absolute bottom-[8%] left-1/2 aspect-square w-[88%] -translate-x-1/2 rounded-full bg-gradient-to-b from-sky-100 to-sky-50/0 dark:from-zinc-200 dark:to-zinc-200/0"
               />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-b-[1.75rem] rounded-t-full bg-zinc-900">
+              <picture className="relative block">
+                <source srcSet="/dobgima-joshua-foncham-portrait.webp" type="image/webp" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={PHOTO_PATH}
-                  alt="Dobgima Joshua Foncham, software engineer, working on a laptop"
-                  width={1080}
-                  height={1080}
+                  src="/dobgima-joshua-foncham-portrait.png"
+                  alt="Dobgima Joshua Foncham, software engineer"
+                  width={720}
+                  height={680}
                   fetchPriority="high"
-                  className="h-full w-full object-cover object-[68%_50%]"
+                  className="relative h-auto w-full"
                 />
-              </div>
-              <figcaption className="absolute -bottom-7 left-1/2 flex -translate-x-1/2 items-center gap-3 whitespace-nowrap rounded-xl bg-white px-4 py-3 text-left shadow-[0_12px_32px_-12px_rgb(0_0_0/0.25)] ring-1 ring-zinc-200 lg:-left-10 lg:translate-x-0 dark:bg-zinc-900 dark:ring-zinc-800">
+              </picture>
+              <figcaption className="absolute -bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 whitespace-nowrap rounded-xl bg-white px-4 py-3 text-left shadow-[0_12px_32px_-12px_rgb(0_0_0/0.25)] ring-1 ring-zinc-200 lg:-left-10 lg:translate-x-0 dark:bg-zinc-900 dark:ring-zinc-800">
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
                   <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-[18px] w-[18px]">
                     <rect x="3" y="7" width="18" height="13" rx="2" />
@@ -213,15 +213,16 @@ export default async function HomePage() {
       </section>
 
       {/* ───────── Services ───────── */}
-      <section aria-labelledby="services-heading" className="scroll-reveal py-16 text-center">
+      <section aria-labelledby="services-heading" data-reveal className="py-16 text-center">
         <p className={eyebrow}>What I do</p>
         <h2 id="services-heading" className={`mt-3 ${sectionTitle}`}>
           Products that work as hard as you do
         </h2>
-        <div className="mt-12 grid gap-6 text-left md:grid-cols-3">
+        <div data-reveal-group className="mt-12 grid gap-6 text-left md:grid-cols-3">
           {services.map((s) => (
             <article
               key={s.title}
+              data-reveal
               className="lift rounded-2xl border border-zinc-200 bg-white p-7 dark:border-zinc-800 dark:bg-zinc-900"
             >
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-400">
@@ -237,7 +238,7 @@ export default async function HomePage() {
       </section>
 
       {/* ───────── About ───────── */}
-      <section aria-labelledby="about-heading" className="scroll-reveal py-16 text-center">
+      <section aria-labelledby="about-heading" data-reveal className="py-16 text-center">
         <p className={eyebrow}>About</p>
         <h2 id="about-heading" className={`mt-3 ${sectionTitle}`}>
           About {FULL_NAME}
@@ -251,7 +252,7 @@ export default async function HomePage() {
           </p>
           <p>
             He is the founder of MotorWise and YADIMS Fabrics &amp; Seams, and has
-            built platforms such as Home237 and Merit Leaders — taking each one from
+            built platforms such as Home237 and Merit Leaders, taking each one from
             idea to a live product people use.
           </p>
         </div>
@@ -264,12 +265,12 @@ export default async function HomePage() {
       </section>
 
       {/* ───────── Projects ───────── */}
-      <section aria-labelledby="projects-heading" className="scroll-reveal py-16 text-center">
+      <section aria-labelledby="projects-heading" data-reveal className="py-16 text-center">
         <p className={eyebrow}>Selected work</p>
         <h2 id="projects-heading" className={`mt-3 ${sectionTitle}`}>
           Featured projects
         </h2>
-        <div className="mt-12 grid gap-6 text-left sm:grid-cols-2">
+        <div data-reveal-group className="mt-12 grid gap-6 text-left sm:grid-cols-2">
           {featured.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
@@ -283,8 +284,7 @@ export default async function HomePage() {
                 className="font-semibold text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
               >
                 {project.name}
-              </Link>{" "}
-              — {project.tagline}
+              </Link>: {project.tagline}
             </li>
           ))}
         </ul>
@@ -297,14 +297,14 @@ export default async function HomePage() {
       </section>
 
       {/* ───────── Reviews ───────── */}
-      <section aria-labelledby="reviews-heading" className="scroll-reveal py-16 text-center">
+      <section aria-labelledby="reviews-heading" data-reveal className="py-16 text-center">
         <p className={eyebrow}>Testimonials</p>
         <h2 id="reviews-heading" className={`mt-3 ${sectionTitle}`}>
           What clients say
         </h2>
         {reviews.length > 0 ? (
           <>
-            <div className="mt-12 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
+            <div data-reveal-group className="mt-12 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
               {reviews.slice(0, 3).map((review) => (
                 <ReviewCard key={review.id} review={review} />
               ))}
@@ -330,7 +330,7 @@ export default async function HomePage() {
       </section>
 
       {/* ───────── Call to action ───────── */}
-      <section aria-labelledby="cta-heading" className="scroll-reveal py-16">
+      <section aria-labelledby="cta-heading" data-reveal className="py-16">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-600 via-sky-700 to-indigo-700 px-6 py-14 text-center text-white shadow-2xl shadow-sky-900/20 sm:px-12">
           <div aria-hidden="true" className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
           <div aria-hidden="true" className="absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-amber-300/20 blur-2xl" />

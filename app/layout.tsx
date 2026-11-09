@@ -1,14 +1,24 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import RevealOnScroll from "@/components/RevealOnScroll";
+
 import {
   DEFINITION_SENTENCE,
   DOMAIN,
   FULL_NAME,
   HOME_TITLE,
 } from "@/lib/config";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-jakarta",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(DOMAIN),
@@ -53,7 +63,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="no-js" suppressHydrationWarning>
+    <html lang="en" className={`no-js ${jakarta.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
@@ -70,6 +80,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppButton />
+        <RevealOnScroll />
       </body>
     </html>
   );

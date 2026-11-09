@@ -28,9 +28,9 @@ export default function FaqPage() {
       <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
         Frequently asked questions about {FULL_NAME}
       </h1>
-      <dl className="mt-8 max-w-3xl space-y-8">
+      <dl data-reveal-group className="mt-8 max-w-3xl space-y-8">
         {faqItems.map((item) => (
-          <div key={item.question}>
+          <div key={item.question} data-reveal>
             <dt className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
               {item.question}
             </dt>

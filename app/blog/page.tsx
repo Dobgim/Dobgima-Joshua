@@ -27,7 +27,7 @@ export default function BlogPage() {
         Blog
       </h1>
       <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
-        Notes on building real products from Buea, Cameroon — by{" "}
+        Notes on building real products from Buea, Cameroon, by{" "}
         <Link
           href="/about"
           className="font-medium text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
@@ -36,11 +36,12 @@ export default function BlogPage() {
         </Link>
         .
       </p>
-      <ul className="mt-8 max-w-3xl space-y-6">
+      <ul data-reveal-group className="mt-8 max-w-3xl space-y-6">
         {posts.map((post) => (
           <li
             key={post.slug}
-            className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-800"
+            data-reveal
+            className="lift rounded-xl border border-zinc-200 p-5 dark:border-zinc-800"
           >
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-lg font-semibold">

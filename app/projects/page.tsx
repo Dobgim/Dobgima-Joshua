@@ -27,7 +27,7 @@ export default function ProjectsPage() {
         Projects by {FULL_NAME}
       </h1>
       <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
-        Products and platforms I founded, co-founded or built — each with a
+        Products and platforms I founded, co-founded or built, each with a
         full case study. More background on the{" "}
         <Link
           href="/about"
@@ -37,7 +37,7 @@ export default function ProjectsPage() {
         </Link>
         .
       </p>
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div data-reveal-group className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

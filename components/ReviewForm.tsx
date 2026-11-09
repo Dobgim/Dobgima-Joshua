@@ -97,7 +97,7 @@ export default function ReviewForm({ projectNames }: { projectNames: string[] })
             className={inputClass}
           />
           <p id="email-hint" className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-            Never shown publicly — only used to confirm you&apos;re a real client.
+            Never shown publicly. Only used to confirm you&apos;re a real client.
           </p>
           <FieldError id="email-error" message={e.email} />
         </div>

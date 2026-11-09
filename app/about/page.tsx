@@ -9,7 +9,6 @@ import {
   EMPLOYER,
   FULL_NAME,
   KNOWS_ABOUT,
-  PHOTO_PATH,
 } from "@/lib/config";
 import { projects } from "@/lib/projects";
 import { profilePageSchema } from "@/lib/schema";
@@ -41,14 +40,20 @@ export default function AboutPage() {
       </h1>
 
       <div className="mt-8 flex flex-col gap-8 md:flex-row">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={PHOTO_PATH}
-          alt="Dobgima Joshua Foncham"
-          width={240}
-          height={240}
-          className="h-60 w-60 rounded-xl border border-zinc-200 object-cover dark:border-zinc-800"
-        />
+        <div className="relative w-60 shrink-0 self-center md:self-start">
+        <span aria-hidden="true" className="absolute bottom-[8%] left-1/2 aspect-square w-[88%] -translate-x-1/2 rounded-full bg-gradient-to-b from-sky-100 to-sky-50/0 dark:from-zinc-200 dark:to-zinc-200/0" />
+        <picture className="relative block">
+          <source srcSet="/dobgima-joshua-foncham-portrait.webp" type="image/webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/dobgima-joshua-foncham-portrait.png"
+            alt="Dobgima Joshua Foncham"
+            width={720}
+            height={680}
+            className="relative h-auto w-full"
+          />
+        </picture>
+        </div>
         <div className="max-w-2xl space-y-4 text-zinc-600 dark:text-zinc-400">
           <p className="text-lg leading-relaxed">{DEFINITION_SENTENCE}</p>
           <p>
@@ -58,7 +63,7 @@ export default function AboutPage() {
           <p>
             {FULL_NAME} earned a {EDUCATION.degree} at {EDUCATION.school} in{" "}
             {EDUCATION.city}, and works as {EMPLOYER.role.toLowerCase()} at{" "}
-            {EMPLOYER.name} — {EMPLOYER.description.charAt(0).toLowerCase() + EMPLOYER.description.slice(1)}.
+            {EMPLOYER.name}, {EMPLOYER.description.charAt(0).toLowerCase() + EMPLOYER.description.slice(1)}.
           </p>
           <p>
             Beyond client and employer work, he founded MotorWise (an AI
@@ -69,7 +74,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <section aria-labelledby="skills-heading" className="mt-12">
+      <section data-reveal aria-labelledby="skills-heading" className="mt-12">
         <h2 id="skills-heading" className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
           Skills &amp; technologies
         </h2>
@@ -85,7 +90,7 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <section aria-labelledby="work-heading" className="mt-12">
+      <section data-reveal aria-labelledby="work-heading" className="mt-12">
         <h2 id="work-heading" className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
           Selected work
         </h2>
@@ -98,13 +103,13 @@ export default function AboutPage() {
               >
                 {project.name}
               </Link>{" "}
-              ({project.role}) — {project.tagline}
+              ({project.role}): {project.tagline}
             </li>
           ))}
         </ul>
       </section>
 
-      <section aria-labelledby="contact-heading" className="mt-12">
+      <section data-reveal aria-labelledby="contact-heading" className="mt-12">
         <h2 id="contact-heading" className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
           Get in touch
         </h2>

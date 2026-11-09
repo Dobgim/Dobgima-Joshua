@@ -9,13 +9,13 @@ import { getApprovedReviews } from "@/lib/reviews";
 
 export const revalidate = 600;
 
-const description = `Reviews from real clients of ${FULL_NAME}, software engineer in Buea, Cameroon — and a form for clients to leave their own review.`;
+const description = `Reviews from real clients of ${FULL_NAME}, software engineer in Buea, Cameroon, and a form for clients to leave their own review.`;
 
 export const metadata: Metadata = {
   title: "Client reviews",
   description,
   alternates: { canonical: "/reviews" },
-  openGraph: { title: `Client reviews — ${FULL_NAME}`, description, url: "/reviews" },
+  openGraph: { title: `Client reviews for ${FULL_NAME}`, description, url: "/reviews" },
 };
 
 export default async function ReviewsPage() {
