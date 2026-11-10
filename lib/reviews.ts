@@ -24,8 +24,16 @@ export interface NewReview {
   consent: true;
 }
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+// Accepts the names set manually (.env.example) and the ones the Vercel ×
+// Supabase integration adds automatically.
+const SUPABASE_URL = (
+  process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL
+)?.replace(/\/+$/, "");
+const SUPABASE_ANON_KEY =
+  process.env.SUPABASE_ANON_KEY ??
+  process.env.SUPABASE_PUBLISHABLE_KEY ??
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
 export const reviewsConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -33,9 +41,12 @@ export const reviewsConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 export const REVIEWS_REVALIDATE_SECONDS = 600;
 
 function headers(): HeadersInit {
+  const key = SUPABASE_ANON_KEY ?? "";
   return {
-    apikey: SUPABASE_ANON_KEY ?? "",
-    Authorization: `Bearer ${SUPABASE_ANON_KEY ?? ""}`,
+    apikey: key,
+    // Legacy anon keys are JWTs and go in Authorization too; new
+    // "sb_publishable_" keys must only be sent as the apikey header.
+    ...(key.startsWith("eyJ") ? { Authorization: `Bearer ${key}` } : {}),
     "Content-Type": "application/json",
   };
 }

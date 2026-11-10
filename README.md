@@ -1,4 +1,4 @@
-# dobgimajoshua.com — personal site of Dobgima Joshua Foncham
+# dobgimajoshua.dev — personal site of Dobgima Joshua Foncham
 
 Next.js (App Router) + TypeScript strict + Tailwind CSS. Every page is statically generated, so the full HTML (content **and** JSON-LD) is readable with JavaScript disabled — which is what search and AI crawlers see.
 

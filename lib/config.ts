@@ -3,8 +3,8 @@
  * (canonical URLs, JSON-LD @id, sitemap, RSS, llms.txt links) follows.
  */
 
-// [PLACEHOLDER: replace with your real domain, e.g. "https://dobgimajoshua.com"]
-export const DOMAIN = "https://dobgimajoshua.com";
+// Live domain. Change only here (and in scripts/indexnow.mjs).
+export const DOMAIN = "https://dobgimajoshua.dev";
 
 export const PERSON_ID = `${DOMAIN}/#person`;
 export const WEBSITE_ID = `${DOMAIN}/#website`;

@@ -16,7 +16,7 @@ Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea who buil
 
 ## Links
 
-- 🌐 Website: https://dobgimajoshua.com <!-- update when the domain is live -->
+- 🌐 Website: https://dobgimajoshua.dev
 - 💼 LinkedIn: https://www.linkedin.com/in/dobgima-joshua-2291a7301/
 - 🧑‍💻 Upwork: https://www.upwork.com/freelancers/~015865bd83a84b1d34
 - 🗃️ Second GitHub account: https://github.com/Dobgim

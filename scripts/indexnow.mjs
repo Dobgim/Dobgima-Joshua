@@ -6,7 +6,7 @@
  * batch to api.indexnow.org with the key file served from /public.
  */
 
-const DOMAIN = "https://dobgimajoshua.com"; // keep in sync with lib/config.ts DOMAIN
+const DOMAIN = "https://dobgimajoshua.dev"; // keep in sync with lib/config.ts DOMAIN
 const KEY = "618c969cd838b82f0f6aef45b2914f97"; // must match the key file in /public
 
 async function main() {
