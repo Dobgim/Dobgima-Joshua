@@ -15,6 +15,8 @@ import {
   PHOTO_PATH,
   SAME_AS,
   SECOND_CITY,
+  SECONDARY_SCHOOL,
+  BIRTH_DATE,
   SITE_UPDATED,
   WEBSITE_ID,
   absoluteUrl,
@@ -71,15 +73,27 @@ export function personSchema(): JsonLd {
       "@type": "Country",
       name: LOCATION.countryName,
     },
-    alumniOf: {
-      "@type": "CollegeOrUniversity",
-      name: EDUCATION.school,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: EDUCATION.city,
-        addressCountry: LOCATION.countryCode,
+    birthDate: BIRTH_DATE,
+    alumniOf: [
+      {
+        "@type": "CollegeOrUniversity",
+        name: EDUCATION.school,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: EDUCATION.city,
+          addressCountry: LOCATION.countryCode,
+        },
       },
-    },
+      {
+        "@type": "HighSchool",
+        name: SECONDARY_SCHOOL.name,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: SECONDARY_SCHOOL.city,
+          addressCountry: LOCATION.countryCode,
+        },
+      },
+    ],
     worksFor: {
       "@type": "Organization",
       name: EMPLOYER.name,
@@ -93,8 +107,8 @@ export function personSchema(): JsonLd {
       },
       {
         "@type": "Organization",
-        name: "YADIMS Fabrics & Seams",
-        url: "https://yadimsfabrics.com",
+        name: "Home237",
+        url: "https://home237.com",
       },
     ],
     knowsAbout: KNOWS_ABOUT,

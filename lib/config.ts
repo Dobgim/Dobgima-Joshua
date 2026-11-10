@@ -13,7 +13,7 @@ export const PERSON_ID = `${DOMAIN}/#person`;
 export const WEBSITE_ID = `${DOMAIN}/#website`;
 
 export const FULL_NAME = "Dobgima Joshua Foncham";
-export const ALTERNATE_NAMES = ["Joshua Foncham", "Dobgima Joshua", "KIMMICH"];
+export const ALTERNATE_NAMES = ["Joshua Foncham", "Dobgima Joshua"];
 export const JOB_TITLE = "Software Engineer";
 export const EMAIL = "dobgimajoshua52@gmail.com";
 export const PHONE = "+237681047097";
@@ -70,6 +70,15 @@ export const EDUCATION = {
   school: "Landmark Metropolitan University Institute (LMUI)",
   schoolShort: "LMUI",
   city: "Buea",
+};
+
+/** Personal details provided by Dobgima Joshua Foncham for his public profile. */
+export const BIRTH_DATE = "2004-08-12";
+export const BIRTH_DATE_DISPLAY = "12 August 2004";
+export const SECONDARY_SCHOOL = {
+  name: "St Joseph Comprehensive College",
+  city: "Douala",
+  completed: 2023,
 };
 
 export const EMPLOYER = {

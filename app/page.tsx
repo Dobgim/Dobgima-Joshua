@@ -240,12 +240,12 @@ export default async function HomePage() {
           <p>
             {FULL_NAME} is a Cameroonian software engineer working from{" "}
             {LOCATIONS_LABEL}. He holds a {EDUCATION.degree} from {EDUCATION.school}{" "}
-            and works as {EMPLOYER.role.toLowerCase()} at {EMPLOYER.name}, an
+            and works as {EMPLOYER.role.replace("Remote", "remote")} at {EMPLOYER.name}, an
             Africa-to-Japan education and travel consultancy.
           </p>
           <p>
-            He is the founder of MotorWise and YADIMS Fabrics &amp; Seams, and has
-            built platforms such as Home237 and Merit Leaders, taking each one from
+            He is the founder of MotorWise and Home237, and has built platforms such
+            as Merit Leaders and FoodieExpress, taking each one from
             idea to a live product people use.
           </p>
         </div>

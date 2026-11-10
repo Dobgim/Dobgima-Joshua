@@ -26,7 +26,7 @@ export default function Footer() {
         <p className="mx-auto mt-2 max-w-xl text-sm text-zinc-600 dark:text-zinc-400">
           Software engineer in {LOCATIONS_LABEL}, building fast, reliable web and
           mobile products with Next.js, Flutter, Supabase and Firebase. Founder of
-          MotorWise.
+          MotorWise and Home237.
         </p>
         <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
           {profileLinks.map((link) => (

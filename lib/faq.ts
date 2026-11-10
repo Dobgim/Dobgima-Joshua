@@ -5,12 +5,12 @@ export const faqItems: FaqItem[] = [
   {
     question: "Who is Dobgima Joshua Foncham?",
     answer:
-      "Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea, South West Region, Cameroon. He builds web, mobile and AI products, is the founder of MotorWise, an AI vehicle maintenance platform, and works as remote IT staff at ConsultStudyBridge.",
+      "Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea, South West Region, Cameroon. He builds web, mobile and AI products, is the founder of MotorWise, an AI vehicle maintenance platform, and of Home237, a property rental platform for Cameroon, and works as remote IT staff at ConsultStudyBridge.",
   },
   {
     question: "What does Dobgima Joshua Foncham do?",
     answer:
-      "Dobgima Joshua Foncham is a software engineer who builds web, mobile and AI products with Next.js, TypeScript, React, Flutter, Supabase and Firebase. He founded MotorWise and YADIMS Fabrics & Seams, built the property rental platform Home237 and the scholarship platform Merit Leaders, and is co-building the EdTech startup WeLearn.",
+      "Dobgima Joshua Foncham is a software engineer who builds web, mobile and AI products with Next.js, TypeScript, React, Flutter, Supabase and Firebase. He founded MotorWise and the property rental platform Home237, built the scholarship platform Merit Leaders, and is co-building the EdTech startup WeLearn.",
   },
   {
     question: "What is MotorWise and who founded it?",
@@ -30,7 +30,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Where did Dobgima Joshua Foncham study?",
     answer:
-      "Dobgima Joshua Foncham earned a BTech in Software Engineering at Landmark Metropolitan University Institute (LMUI) in Buea, Cameroon.",
+      "Dobgima Joshua Foncham earned a BTech in Software Engineering at Landmark Metropolitan University Institute (LMUI) in Buea, Cameroon. He completed secondary school at St Joseph Comprehensive College in Douala in 2023.",
   },
   {
     question: "How can I hire Dobgima Joshua Foncham?",
@@ -55,7 +55,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "What is Home237?",
     answer:
-      "Home237 is a property rental platform for Cameroon that Dobgima Joshua Foncham built and deployed. It lets property listings be published and browsed online at home237.com.",
+      "Home237 is a property rental platform for Cameroon founded, built and deployed by Dobgima Joshua Foncham. It lets property listings be published and browsed online at home237.com.",
   },
   {
     question: "Is Dobgima Joshua Foncham available for freelance work?",

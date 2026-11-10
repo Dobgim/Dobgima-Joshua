@@ -4,8 +4,8 @@ Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea who buil
 
 - 💼 Remote IT staff at **ConsultStudyBridge** (Africa-to-Japan education and travel consultancy)
 - 🚗 Founder of **[MotorWise](https://www.motorwise.co)** — AI Fleet Maintenance Copilot, multi-tenant SaaS on Supabase PostgreSQL with Row-Level Security
-- 🏠 Built and deployed **[Home237](https://home237.com)** — property rental platform for Cameroon
-- 🧵 Founder & developer of **[YADIMS Fabrics & Seams](https://yadimsfabrics.com)**
+- 🏠 Founder of **[Home237](https://home237.com)** — property rental platform for Cameroon
+- 🧵 Built the website for **[YADIMS Fabrics & Seams](https://yadimsfabrics.com)**
 - 📚 Co-building **[WeLearn](https://welearncm.org)** — EdTech startup
 - 🏫 Built a School Management System for schools in Cameroon
 - 📅 Booking system demo: https://booking-system-umber-six.vercel.app

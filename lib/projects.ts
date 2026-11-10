@@ -69,7 +69,7 @@ export const projects: Project[] = [
     slug: "home237",
     name: "Home237",
     tagline: "Property rental platform for Cameroon.",
-    role: "Builder & developer",
+    role: "Founder",
     liveUrl: "https://home237.com",
     featured: true,
     schemaType: "SoftwareApplication",
@@ -79,7 +79,8 @@ export const projects: Project[] = [
       "Finding rental property in Cameroon is largely informal and offline, making it hard for renters to discover listings and for landlords to reach tenants.",
     whatIBuilt:
       "Home237, a property rental platform for Cameroon where listings can be published and browsed online.",
-    myRole: "Dobgima Joshua Foncham built and deployed the platform.",
+    myRole:
+      "Founder. Dobgima Joshua Foncham founded Home237 and designed, built and deployed the platform.",
     keyFeatures: [
       "Online property listings for the Cameroonian market",
       "Deployed and running in production",
@@ -90,7 +91,7 @@ export const projects: Project[] = [
     slug: "yadims-fabrics",
     name: "YADIMS Fabrics & Seams",
     tagline: "E-commerce website for a fabric and lace business.",
-    role: "Founder & developer",
+    role: "Developer",
     liveUrl: "https://yadimsfabrics.com",
     featured: true,
     schemaType: "CreativeWork",
@@ -98,11 +99,11 @@ export const projects: Project[] = [
     problem:
       "The fabric and lace business needed an online presence to showcase products and reach customers beyond word of mouth.",
     whatIBuilt:
-      "The website for YADIMS Fabrics & Seams, the fabric and lace business founded by Dobgima Joshua Foncham.",
-    myRole: "Founder of the business and developer of the website.",
+      "The website for YADIMS Fabrics & Seams, a fabric and lace business, showcasing its products online.",
+    myRole: "Dobgima Joshua Foncham designed and developed the website.",
     keyFeatures: [
       "Product showcase for fabrics and lace",
-      "Business website built and maintained by the founder",
+      "Professional business website, designed and built end to end",
     ],
     result: "Live at yadimsfabrics.com.",
   },

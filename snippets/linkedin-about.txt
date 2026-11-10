@@ -1,6 +1,6 @@
 === LINKEDIN HEADLINE (220 char limit) ===
 
-Software Engineer | Founder of MotorWise (AI Fleet Maintenance Copilot) | Next.js · TypeScript · Flutter · Supabase · Firebase | Building web, mobile & AI products from Buea, Cameroon
+Software Engineer | Founder of MotorWise and Home237 | Next.js · TypeScript · Flutter · Supabase · Firebase | Building web, mobile & AI products from Buea, Cameroon
 
 === LINKEDIN ABOUT (under 2,600 characters) ===
 
@@ -10,9 +10,9 @@ That's the short version. Here's what I actually do:
 
 🚗 MotorWise (motorwise.co) — I founded and built an AI vehicle maintenance copilot for fleet operators: a multi-tenant SaaS where every tenant's data is isolated with Supabase PostgreSQL Row-Level Security.
 
-🏠 Home237 (home237.com) — I built and deployed a property rental platform for Cameroon.
+🏠 Home237 (home237.com): I founded and built a property rental platform for Cameroon.
 
-🧵 YADIMS Fabrics & Seams (yadimsfabrics.com) — my fabric and lace business; I'm the founder and I built the website.
+🧵 YADIMS Fabrics & Seams (yadimsfabrics.com): I designed and built the website for this fabric and lace business.
 
 📚 WeLearn (welearncm.org) — an EdTech startup I'm co-building with a colleague.
 
