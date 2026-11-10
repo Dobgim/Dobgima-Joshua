@@ -30,15 +30,12 @@ Posts with `draft: true` show on the site with a Draft badge but are **excluded*
 
 Clients submit reviews through the form on `/reviews`. Each review is saved as **pending** and only appears on the site after you approve it.
 
-One-time setup:
-1. Create a free project at https://supabase.com (or reuse an existing one).
-2. In the Supabase **SQL Editor**, run `supabase/reviews.sql`.
-3. From **Project Settings → API**, copy the project URL and the `anon` public key.
-4. Add them as `SUPABASE_URL` and `SUPABASE_ANON_KEY` in Vercel → Settings → Environment Variables (and in `.env.local` for local dev; see `.env.example`). Redeploy.
+Live setup: Supabase project **"my portfolio"** (ref `eajnbrzgmckxeeohtdrt`, region eu-west-2). The `reviews` table, Row-Level Security policies and column grants from `supabase/reviews.sql` are already applied. The project URL and **publishable** key are built into `lib/reviews.ts` (publishable keys are designed to be public; RLS limits them to inserting pending reviews and reading approved ones), so no Vercel environment variables are required. Setting `SUPABASE_URL` / `SUPABASE_ANON_KEY` in Vercel overrides them.
+
+Never commit a secret key or a personal access token (`sbp_...`).
 
 Approving a review: Supabase → **Table Editor → reviews** → change `status` from `pending` to `approved` (or `rejected`). It shows on `/reviews` and the homepage within about 10 minutes. The reviewer's email is stored so you can confirm they're a real client, but it's never readable from the website.
 
-Until the env vars are set, the page shows "No reviews yet" and the form asks people to email their review instead.
 
 ## Deploy to Vercel
 

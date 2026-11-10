@@ -24,16 +24,24 @@ export interface NewReview {
   consent: true;
 }
 
-// Accepts the names set manually (.env.example) and the ones the Vercel ×
-// Supabase integration adds automatically.
+// Live project "my portfolio". The publishable key is designed to be public:
+// Row-Level Security (supabase/reviews.sql) limits it to inserting pending
+// reviews and reading approved ones. Environment variables override these.
+// Never put a secret key or a personal access token (sbp_...) here.
+const DEFAULT_SUPABASE_URL = "https://eajnbrzgmckxeeohtdrt.supabase.co";
+const DEFAULT_PUBLISHABLE_KEY = "sb_publishable_rW9tdTbdv2LvzNMbsy5I3w_DJqBaokL";
+
 const SUPABASE_URL = (
-  process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL
-)?.replace(/\/+$/, "");
+  process.env.SUPABASE_URL ??
+  process.env.NEXT_PUBLIC_SUPABASE_URL ??
+  DEFAULT_SUPABASE_URL
+).replace(/\/+$/, "");
 const SUPABASE_ANON_KEY =
   process.env.SUPABASE_ANON_KEY ??
   process.env.SUPABASE_PUBLISHABLE_KEY ??
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+  DEFAULT_PUBLISHABLE_KEY;
 
 export const reviewsConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
