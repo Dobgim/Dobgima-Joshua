@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: { title: HOME_TITLE, description: DEFINITION_SENTENCE },
 };
 
-export const revalidate = 600;
+export const revalidate = 60;
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
@@ -117,7 +117,7 @@ export default async function HomePage() {
               <div className="flex flex-col-reverse justify-end pr-4">
                 <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Projects</dt>
                 <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white">
-                  <CountUp to={projects.length} />
+                  <CountUp to={projects.length} suffix="+" />
                 </dd>
               </div>
               <div className="flex flex-col-reverse justify-end px-4">
@@ -125,8 +125,8 @@ export default async function HomePage() {
                 <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white"><CountUp to={2} /></dd>
               </div>
               <div className="flex flex-col-reverse justify-end pl-4">
-                <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Degree</dt>
-                <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white">BTech</dd>
+                <dt className="mt-1 text-xs font-medium uppercase leading-snug tracking-wider text-zinc-500 dark:text-zinc-400">Available worldwide</dt>
+                <dd className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white">Remote</dd>
               </div>
             </dl>
           </div>

@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { SUPABASE_URL, supabaseHeaders } from "@/lib/supabase-public";
 
 /**
@@ -23,6 +23,7 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ ok: false, error: "Could not verify admin" }, { status: 502 });
   }
 
+  revalidateTag("reviews");
   revalidatePath("/reviews");
   revalidatePath("/");
   return Response.json({ ok: true });

@@ -31,8 +31,8 @@ const SUPABASE_URL_BASE = SUPABASE_URL;
 export const reviewsConfigured = Boolean(SUPABASE_URL_BASE && SUPABASE_PUBLISHABLE_KEY);
 
 /** Approved reviews appear on the site within this many seconds
- *  (instantly when approved from /admin, which triggers revalidation). */
-export const REVIEWS_REVALIDATE_SECONDS = 600;
+ *  (instantly when approved from /admin, which purges the cache). */
+export const REVIEWS_REVALIDATE_SECONDS = 60;
 
 function headers(): HeadersInit {
   return supabaseHeaders();

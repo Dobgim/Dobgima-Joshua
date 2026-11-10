@@ -158,6 +158,7 @@ function Dashboard({ session }: { session: Session }) {
   const [tab, setTab] = useState<Status | "all">("pending");
   const [busyId, setBusyId] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [showLink, setShowLink] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -190,6 +191,7 @@ function Dashboard({ session }: { session: Session }) {
     else {
       setReviews((list) => list.map((x) => (x.id === r.id ? { ...x, status } : x)));
       setNotice(status === "approved" ? `Approved ${r.name}'s review. It is now live on the site.` : `Marked ${r.name}'s review as ${status}.`);
+      setShowLink(status === "approved");
       if (status === "approved" || r.status === "approved") await refreshPublicPages();
     }
     setBusyId(null);
@@ -203,6 +205,7 @@ function Dashboard({ session }: { session: Session }) {
     else {
       setReviews((list) => list.filter((x) => x.id !== r.id));
       setNotice(`Deleted ${r.name}'s review.`);
+      setShowLink(false);
       if (r.status === "approved") await refreshPublicPages();
     }
     setBusyId(null);
@@ -241,7 +244,14 @@ function Dashboard({ session }: { session: Session }) {
 
       {notice && (
         <p role="status" className="mt-6 flex items-start justify-between gap-4 rounded-lg bg-sky-50 p-3 text-sm text-sky-900 dark:bg-sky-950/50 dark:text-sky-200">
-          {notice}
+          <span>
+            {notice}{" "}
+            {showLink && (
+              <a href="/reviews" target="_blank" rel="noopener" className="font-semibold underline underline-offset-4">
+                View it on the site
+              </a>
+            )}
+          </span>
           <button onClick={() => setNotice(null)} aria-label="Dismiss" className="font-semibold">Close</button>
         </p>
       )}

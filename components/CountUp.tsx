@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
  * Counts from 0 to `to` when first visible. Server-renders the final value,
  * so crawlers and no-JS visitors always see the real number.
  */
-export default function CountUp({ to, pad = 2, duration = 1400 }: { to: number; pad?: number; duration?: number }) {
+export default function CountUp({ to, pad = 1, suffix = "", duration = 1400 }: { to: number; pad?: number; suffix?: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [value, setValue] = useState(to);
 
@@ -37,6 +37,7 @@ export default function CountUp({ to, pad = 2, duration = 1400 }: { to: number; 
   return (
     <span ref={ref} className="tabular-nums">
       {String(value).padStart(pad, "0")}
+      {suffix}
     </span>
   );
 }

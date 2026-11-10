@@ -7,7 +7,7 @@ import { FULL_NAME } from "@/lib/config";
 import { projects } from "@/lib/projects";
 import { getApprovedReviews } from "@/lib/reviews";
 
-export const revalidate = 600;
+export const revalidate = 60;
 
 const description = `Reviews from real clients of ${FULL_NAME}, software engineer in Buea, Cameroon, and a form for clients to leave their own review.`;
 

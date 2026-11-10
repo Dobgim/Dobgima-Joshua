@@ -4,7 +4,7 @@
  */
 
 // Live domain. Change only here (and in scripts/indexnow.mjs).
-export const DOMAIN = "https://dobgimajoshua.dev";
+export const DOMAIN = "https://www.dobgimajoshua.dev";
 
 /** Bump when content changes; shown as "Last updated" and used as dateModified. */
 export const SITE_UPDATED = "2026-11-10";
