@@ -7,7 +7,7 @@ import { projectListSchema, webPageSchema } from "@/lib/schema";
 import { FULL_NAME } from "@/lib/config";
 import { projects } from "@/lib/projects";
 
-const description = `Projects built by ${FULL_NAME}: MotorWise, Merit Leaders, Home237, YADIMS Fabrics & Seams, WeLearn, a school management system and a booking system demo.`;
+const description = `Projects built by ${FULL_NAME}: MotorWise, Merit Leaders, Home237, YADIMS Fabrics & Seams, FoodieExpress, TradeHub B2B, WeLearn, a school management system and a booking system demo.`;
 
 export const metadata: Metadata = {
   title: "Projects",
