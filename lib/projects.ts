@@ -130,29 +130,6 @@ export const projects: Project[] = [
     result: "Live on Vercel.",
   },
   {
-    slug: "tradehub-b2b",
-    name: "TradeHub B2B",
-    tagline: "Wholesale marketplace connecting buyers and suppliers.",
-    role: "Developer",
-    liveUrl: "https://alibaba-clone-liard.vercel.app",
-    featured: false,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "ShoppingApplication",
-    techStack: ["Next.js", "React"],
-    problem:
-      "Businesses sourcing products in bulk need one place to discover suppliers, compare products and request quotes.",
-    whatIBuilt:
-      "TradeHub B2B, a business-to-business wholesale marketplace where buyers browse product categories, find suppliers and send requests for quotation (RFQs).",
-    myRole:
-      "Dobgima Joshua Foncham designed and built the marketplace in Next.js as a B2B e-commerce project.",
-    keyFeatures: [
-      "Product categories and supplier listings",
-      "Request for quotation (RFQ) flow for bulk orders",
-      "Buyer and supplier sign-in",
-    ],
-    result: "Live demo on Vercel.",
-  },
-  {
     slug: "welearn",
     name: "WeLearn",
     tagline: "EdTech startup for Cameroon.",
