@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { webPageSchema } from "@/lib/schema";
 import {
   EMAIL,
   FULL_NAME,
@@ -47,6 +49,7 @@ const channels: { label: string; href: string; detail: string }[] = [
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={webPageSchema({ type: "ContactPage", path: "/contact", name: `Contact ${FULL_NAME}`, description })} />
       <Breadcrumbs
         crumbs={[
           { name: "Home", path: "/" },

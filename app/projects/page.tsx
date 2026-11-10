@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProjectCard from "@/components/ProjectCard";
+import JsonLd from "@/components/JsonLd";
+import { projectListSchema, webPageSchema } from "@/lib/schema";
 import { FULL_NAME } from "@/lib/config";
 import { projects } from "@/lib/projects";
 
@@ -17,6 +19,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
+      <JsonLd data={[webPageSchema({ type: "CollectionPage", path: "/projects", name: `Projects by ${FULL_NAME}`, description }), projectListSchema(projects)]} />
       <Breadcrumbs
         crumbs={[
           { name: "Home", path: "/" },

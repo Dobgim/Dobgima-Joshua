@@ -15,11 +15,13 @@ import {
   PHOTO_PATH,
   SAME_AS,
   SECOND_CITY,
+  SITE_UPDATED,
   WEBSITE_ID,
   absoluteUrl,
 } from "./config";
 import type { Project } from "./projects";
 import type { PostMeta } from "./blog";
+import { services, type Service } from "./services";
 
 type JsonLd = Record<string, unknown>;
 
@@ -96,6 +98,23 @@ export function personSchema(): JsonLd {
       },
     ],
     knowsAbout: KNOWS_ABOUT,
+    hasOccupation: {
+      "@type": "Occupation",
+      name: JOB_TITLE,
+      occupationLocation: { "@type": "Country", name: LOCATION.countryName },
+      skills: KNOWS_ABOUT.join(", "),
+    },
+    makesOffer: services.map((svc) => ({
+      "@type": "Offer",
+      itemOffered: { "@id": serviceId(svc) },
+    })),
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "business inquiries",
+      telephone: PHONE,
+      email: EMAIL,
+      url: absoluteUrl("/contact"),
+    },
     sameAs: SAME_AS,
   };
 }
@@ -127,6 +146,7 @@ export function profilePageSchema(): JsonLd {
     name: `About ${FULL_NAME}`,
     mainEntity: personRef(),
     isPartOf: { "@id": WEBSITE_ID },
+    dateModified: SITE_UPDATED,
   };
 }
 
@@ -135,12 +155,14 @@ export interface FaqItem {
   answer: string;
 }
 
-export function faqPageSchema(items: FaqItem[]): JsonLd {
+export function faqPageSchema(items: FaqItem[], path = "/faq"): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": `${DOMAIN}/faq#faqpage`,
-    url: absoluteUrl("/faq"),
+    "@id": `${absoluteUrl(path)}#faqpage`,
+    url: absoluteUrl(path),
+    about: personRef(),
+    dateModified: SITE_UPDATED,
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -187,6 +209,72 @@ export function projectSchema(project: Project): JsonLd {
     base.operatingSystem = "Web";
   }
   return base;
+}
+
+export function serviceId(svc: Service): string {
+  return `${DOMAIN}/services#${svc.slug}`;
+}
+
+/** One Service entity per offering, provided by the Person. */
+export function servicesSchema(): JsonLd[] {
+  return services.map((svc) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": serviceId(svc),
+    name: svc.name,
+    serviceType: svc.name,
+    description: `${svc.answer} ${svc.summary}`,
+    url: `${absoluteUrl("/services")}#${svc.slug}`,
+    provider: personRef(),
+    areaServed: [
+      { "@type": "Country", name: LOCATION.countryName },
+      { "@type": "Place", name: "Worldwide (remote)" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: svc.name,
+      itemListElement: svc.deliverables.map((d) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: d },
+      })),
+    },
+  }));
+}
+
+/** Generic page entity: tells engines what the page is, who it is about and when it changed. */
+export function webPageSchema(opts: {
+  type?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" | "FAQPage";
+  path: string;
+  name: string;
+  description: string;
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": opts.type ?? "WebPage",
+    "@id": `${absoluteUrl(opts.path)}#webpage`,
+    url: absoluteUrl(opts.path),
+    name: opts.name,
+    description: opts.description,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: personRef(),
+    author: personRef(),
+    dateModified: SITE_UPDATED,
+    inLanguage: "en",
+  };
+}
+
+export function projectListSchema(items: Project[]): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Projects by ${FULL_NAME}`,
+    itemListElement: items.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: absoluteUrl(`/projects/${p.slug}`),
+      name: p.name,
+    })),
+  };
 }
 
 export interface Crumb {

@@ -9,8 +9,12 @@ import {
   EMPLOYER,
   FULL_NAME,
   KNOWS_ABOUT,
+  LOCATIONS_LABEL,
+  PHONE_DISPLAY,
+  SITE_UPDATED,
 } from "@/lib/config";
 import { projects } from "@/lib/projects";
+import { services } from "@/lib/services";
 import { profilePageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -73,6 +77,34 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
+
+      <section data-reveal aria-labelledby="facts-heading" className="mt-12">
+        <h2 id="facts-heading" className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+          Key facts about {FULL_NAME}
+        </h2>
+        <dl className="mt-5 grid overflow-hidden rounded-2xl border border-zinc-200 sm:grid-cols-2 dark:border-zinc-800">
+          {[
+            ["Full name", FULL_NAME],
+            ["Also known as", "Joshua Foncham, Dobgima Joshua, KIMMICH"],
+            ["Profession", "Software Engineer"],
+            ["Based in", LOCATIONS_LABEL],
+            ["Education", `${EDUCATION.degree}, ${EDUCATION.school}`],
+            ["Works at", `${EMPLOYER.name} (${EMPLOYER.role.toLowerCase()})`],
+            ["Founder of", "MotorWise and YADIMS Fabrics & Seams"],
+            ["Services", services.map((s) => s.name).join(", ")],
+            ["Core stack", "Next.js, TypeScript, React, Flutter, Supabase, Firebase"],
+            ["Contact", `WhatsApp ${PHONE_DISPLAY} · ${EMAIL}`],
+          ].map(([term, value]) => (
+            <div key={term} className="border-b border-zinc-200 px-5 py-4 sm:odd:border-r dark:border-zinc-800">
+              <dt className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{term}</dt>
+              <dd className="mt-1 text-zinc-800 dark:text-zinc-200">{value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+          Last updated <time dateTime={SITE_UPDATED}>{SITE_UPDATED}</time>
+        </p>
+      </section>
 
       <section data-reveal aria-labelledby="skills-heading" className="mt-12">
         <h2 id="skills-heading" className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">

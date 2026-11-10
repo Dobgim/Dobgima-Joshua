@@ -7,6 +7,8 @@ import ReviewCard from "@/components/ReviewCard";
 import { WhatsAppIcon } from "@/components/WhatsAppButton";
 import { techLogos } from "@/lib/tech-logos";
 import CountUp from "@/components/CountUp";
+import ServiceIcon from "@/components/ServiceIcon";
+import { services } from "@/lib/services";
 import {
   DEFINITION_SENTENCE,
   EDUCATION,
@@ -32,26 +34,6 @@ export const metadata: Metadata = {
 export const revalidate = 600;
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
-
-const services = [
-  {
-    title: "Web applications",
-    body: "Fast, search-friendly websites and web apps built with Next.js, React and TypeScript, from landing pages to full platforms.",
-    icon: (
-      <path d="M3 5h18v12H3zM8 21h8M12 17v4" />
-    ),
-  },
-  {
-    title: "Mobile apps",
-    body: "Cross-platform Android and iOS apps with Flutter and Firebase, designed to feel native and work well on everyday phones.",
-    icon: <path d="M7 2h10v20H7zM11 18h2" />,
-  },
-  {
-    title: "SaaS & back-ends",
-    body: "Secure databases, authentication and multi-tenant systems with Supabase and PostgreSQL that scale as your business grows.",
-    icon: <path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zm0 0v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />,
-  },
-];
 
 function ArrowRight({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -214,24 +196,33 @@ export default async function HomePage() {
 
       {/* ───────── Services ───────── */}
       <section aria-labelledby="services-heading" data-reveal className="py-16 text-center">
-        <p className={eyebrow}>What I do</p>
+        <p className={eyebrow}>What I build and why</p>
         <h2 id="services-heading" className={`mt-3 ${sectionTitle}`}>
-          Products that work as hard as you do
+          Websites, mobile apps and AI that move your business forward
         </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+          Every project starts with one question: what will help your customers
+          find you, use your service and come back?
+        </p>
         <div data-reveal-group className="mt-12 grid gap-6 text-left md:grid-cols-3">
-          {services.map((s) => (
+          {services.map((svc) => (
             <article
-              key={s.title}
+              key={svc.slug}
               data-reveal
-              className="lift rounded-2xl border border-zinc-200 bg-white p-7 dark:border-zinc-800 dark:bg-zinc-900"
+              className="lift flex flex-col rounded-2xl border border-zinc-200 bg-white p-7 dark:border-zinc-800 dark:bg-zinc-900"
             >
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-400">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-                  {s.icon}
-                </svg>
+                <ServiceIcon icon={svc.icon} />
               </span>
-              <h3 className="mt-5 text-lg font-semibold text-zinc-900 dark:text-zinc-50">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{s.body}</p>
+              <h3 className="mt-5 text-lg font-semibold text-zinc-900 dark:text-zinc-50">{svc.name}</h3>
+              <p className="mt-2 flex-1 leading-relaxed text-zinc-600 dark:text-zinc-400">{svc.summary}</p>
+              <Link
+                href={`/services#${svc.slug}`}
+                className="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-700 dark:text-sky-400"
+              >
+                <span className="link-draw">Why it matters</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </article>
           ))}
         </div>
