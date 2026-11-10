@@ -112,6 +112,10 @@ export default function ReviewForm({ projectNames }: { projectNames: string[] })
                 {p}
               </option>
             ))}
+            <option value="Tracking website">Tracking website</option>
+            <option value="Refund guide website">Refund guide website</option>
+            <option value="E-commerce store">E-commerce store</option>
+            <option value="Restaurant website">Restaurant website</option>
             <option value="Freelance / client project">Freelance / client project</option>
             <option value="Other">Other</option>
           </select>
