@@ -59,7 +59,7 @@ export default function BlogPage() {
               )}
             </div>
             <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-              <time dateTime={post.date}>{post.date}</time>
+              <time dateTime={post.date}>{post.date}</time> · {post.readingMinutes} min read
               {post.tags.length > 0 && <> · {post.tags.join(", ")}</>}
             </p>
             <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">

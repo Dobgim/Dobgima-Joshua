@@ -1,0 +1,124 @@
+---
+title: "Supabase Row-Level Security explained (with a real example)"
+description: "What Row-Level Security is, why public Supabase keys are safe with it, and a complete example: a moderated reviews table where visitors submit and admins approve."
+date: "2026-11-10"
+tags: ["Supabase", "PostgreSQL", "Security", "Tutorial"]
+draft: false
+---
+
+**Short answer:** Row-Level Security (RLS) is a PostgreSQL feature that decides, row by row, what each user is allowed to read or change. In Supabase it is what makes it safe to use a public (publishable) key in your website or app: the key only gets access that your RLS policies allow.
+
+## Why RLS matters in Supabase
+
+Supabase exposes your database through an API. Your website or app connects with a **publishable key**, which is designed to be public and can be seen by anyone who opens your site. Without RLS, that key could read or change everything. With RLS enabled and the right policies, the same key can do only what you permit.
+
+Two rules to remember:
+
+- **Enable RLS on every table** that the API can reach.
+- **Never put a secret key or service role key in front-end code.** Those bypass RLS.
+
+## The example: a moderated reviews table
+
+This is the pattern used for the client reviews on this website:
+
+- Visitors can **submit** a review, but it always starts as pending.
+- Visitors can **read only approved** reviews, and never reviewers' email addresses.
+- Only an **admin** can read everything, approve, reject or delete.
+
+### 1. Create the table
+
+```sql
+create table public.reviews (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  name text not null,
+  rating smallint not null check (rating between 1 and 5),
+  body text not null,
+  email text not null,
+  status text not null default 'pending'
+    check (status in ('pending', 'approved', 'rejected'))
+);
+
+alter table public.reviews enable row level security;
+```
+
+### 2. Limit columns with grants
+
+RLS controls **rows**. Column privileges control **columns**. Combining them keeps emails private and stops visitors from setting the status themselves:
+
+```sql
+revoke all on public.reviews from anon, authenticated;
+
+-- visitors may insert these columns only (not status)
+grant insert (name, rating, body, email) on public.reviews to anon;
+
+-- visitors may read these columns only (not email or status)
+grant select (id, created_at, name, rating, body) on public.reviews to anon;
+```
+
+### 3. Add the visitor policies
+
+```sql
+create policy "submit pending review" on public.reviews
+  for insert to anon
+  with check (status = 'pending');
+
+create policy "read approved reviews" on public.reviews
+  for select to anon
+  using (status = 'approved');
+```
+
+### 4. Add an admin check
+
+Keep a list of admins and a helper function that policies can call. `security definer` lets the function read the admins table without exposing it:
+
+```sql
+create table public.admins (
+  user_id uuid primary key references auth.users (id) on delete cascade
+);
+alter table public.admins enable row level security;
+
+create function public.is_admin() returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.admins where user_id = auth.uid());
+$$;
+```
+
+### 5. Add the admin policies
+
+```sql
+grant select on public.reviews to authenticated;
+grant update (status) on public.reviews to authenticated;
+grant delete on public.reviews to authenticated;
+
+create policy "admins read all" on public.reviews
+  for select to authenticated using (public.is_admin());
+
+create policy "admins update status" on public.reviews
+  for update to authenticated
+  using (public.is_admin()) with check (public.is_admin());
+
+create policy "admins delete" on public.reviews
+  for delete to authenticated using (public.is_admin());
+```
+
+Because only the `status` column is granted for update, even an admin cannot edit what a client wrote.
+
+## Test your policies
+
+Do not assume a policy works. Test each role:
+
+- As a visitor: insert a review, then try to read emails and try to insert with `status` set to approved. Both should be refused.
+- As a signed-in non-admin: try to approve a review. No rows should change.
+- As an admin: read all reviews, approve one, and confirm it becomes visible to visitors.
+
+## Common mistakes
+
+- Forgetting to enable RLS on a new table.
+- Writing a policy for `select` but forgetting that `insert` and `update` need their own.
+- Using a broad `grant all` and relying only on policies, when column grants would be safer.
+- Putting a secret key in client code to "make it work".
+
+The same approach scales to multi-tenant SaaS, where every row carries a tenant id and policies make sure each customer only sees their own data. It is the approach behind [MotorWise](/projects/motorwise).
+
+Want help building a secure back end? Read about [web application services](/services#websites), [learn more about me](/about), or [get in touch](/contact).

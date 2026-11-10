@@ -72,7 +72,7 @@ export default async function BlogPostPage({ params }: Props) {
           >
             {FULL_NAME}
           </Link>{" "}
-          · <time dateTime={post.date}>{post.date}</time>
+          · <time dateTime={post.date}>{post.date}</time> · {post.readingMinutes} min read
           {post.tags.length > 0 && <> · {post.tags.join(", ")}</>}
         </p>
         <div className="prose-basic mt-8 text-zinc-700 dark:text-zinc-300">

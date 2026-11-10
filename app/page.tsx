@@ -9,6 +9,7 @@ import { techLogos } from "@/lib/tech-logos";
 import CountUp from "@/components/CountUp";
 import ServiceIcon from "@/components/ServiceIcon";
 import { services } from "@/lib/services";
+import { getAllPosts } from "@/lib/blog";
 import {
   DEFINITION_SENTENCE,
   EDUCATION,
@@ -50,6 +51,7 @@ const eyebrow =
 
 export default async function HomePage() {
   const reviews = await getApprovedReviews();
+  const latestPosts = getAllPosts().filter((p) => !p.draft).slice(0, 3);
   const featured = projects.filter((p) => p.featured);
   const others = projects.filter((p) => !p.featured);
 
@@ -319,6 +321,48 @@ export default async function HomePage() {
           </p>
         )}
       </section>
+
+      {/* ───────── Latest articles ───────── */}
+      {latestPosts.length > 0 && (
+        <section aria-labelledby="articles-heading" data-reveal className="py-16 text-center">
+          <p className={eyebrow}>From the blog</p>
+          <h2 id="articles-heading" className={`mt-3 ${sectionTitle}`}>
+            Latest articles
+          </h2>
+          <div data-reveal-group className="mt-12 grid gap-6 text-left md:grid-cols-3">
+            {latestPosts.map((post) => (
+              <article
+                key={post.slug}
+                data-reveal
+                className="lift flex flex-col rounded-2xl border border-zinc-200 bg-white p-7 dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                  {post.tags[0]} · {post.readingMinutes} min read
+                </p>
+                <h3 className="mt-3 text-lg font-semibold leading-snug text-zinc-900 dark:text-zinc-50">
+                  <Link href={`/blog/${post.slug}`} className="hover:text-sky-700 dark:hover:text-sky-400">
+                    {post.title}
+                  </Link>
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{post.description}</p>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-700 dark:text-sky-400"
+                >
+                  <span className="link-draw">Read article</span>
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </article>
+            ))}
+          </div>
+          <Link
+            href="/blog"
+            className="mt-10 inline-flex items-center gap-1 font-semibold text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
+          >
+            All articles <ArrowRight />
+          </Link>
+        </section>
+      )}
 
       {/* ───────── Call to action ───────── */}
       <section aria-labelledby="cta-heading" data-reveal className="py-16">

@@ -1,0 +1,94 @@
+---
+title: "How to add a WhatsApp chat button to your website (with code)"
+description: "Step-by-step: build a WhatsApp click-to-chat link with a pre-filled message, then add it to any website or a Next.js app."
+date: "2026-11-10"
+tags: ["WhatsApp", "Websites", "Next.js", "Tutorial"]
+draft: false
+---
+
+**Short answer:** create a link in the form `https://wa.me/<number>?text=<message>`, where the number is in full international format without the plus sign, spaces or leading zeros, and the message is URL-encoded. Put that link on a button and visitors can start a WhatsApp chat with you in one tap.
+
+For many businesses, WhatsApp is where customers already prefer to talk. A clear WhatsApp button often makes it much easier for a visitor to become a lead.
+
+## Step 1: format your number
+
+Use the full international number with **digits only**:
+
+- Remove the plus sign, spaces, dashes and brackets.
+- Start with the country code, for example `237` for Cameroon.
+- Remove any leading zero that you would only dial locally.
+
+So `+237 6XX XXX XXX` becomes `2376XXXXXXXX`.
+
+## Step 2: add a pre-filled message (optional)
+
+A pre-filled message tells you where the lead came from and saves the visitor typing. Encode it for a URL, where spaces become `%20`:
+
+```text
+https://wa.me/2376XXXXXXXX?text=Hello%2C%20I%20found%20your%20website%20and%20I%27d%20like%20a%20quote.
+```
+
+You do not have to encode it by hand. In JavaScript, `encodeURIComponent()` does it for you.
+
+## Step 3: add the button to any website
+
+This works on any site, including WordPress, Wix custom HTML blocks or plain HTML:
+
+```html
+<a
+  href="https://wa.me/2376XXXXXXXX?text=Hello%2C%20I%27d%20like%20a%20quote."
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat with us on WhatsApp"
+  style="position:fixed;right:20px;bottom:20px;z-index:50;
+         display:flex;align-items:center;justify-content:center;
+         width:56px;height:56px;border-radius:50%;
+         background:#25D366;color:#fff;text-decoration:none;
+         box-shadow:0 8px 24px rgba(0,0,0,.2);font:600 14px sans-serif"
+>
+  Chat
+</a>
+```
+
+Swap the word "Chat" for the official WhatsApp icon as an inline SVG for a more polished look.
+
+## Step 4: a reusable Next.js component
+
+In a Next.js or React project, build the link once from a config value so the number lives in one place:
+
+```tsx
+const PHONE = "2376XXXXXXXX";
+const MESSAGE = "Hello, I found your website and I'd like to work with you.";
+
+export const WHATSAPP_URL =
+  `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
+
+export default function WhatsAppButton() {
+  return (
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp"
+      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center
+                 justify-center rounded-full bg-[#25D366] text-white shadow-lg"
+    >
+      Chat
+    </a>
+  );
+}
+```
+
+Add it to your root layout so it appears on every page.
+
+## Tips that make the button work better
+
+- **Give it a clear label** such as "Chat on WhatsApp" or "Get a quote". A short label next to the icon catches attention without being annoying.
+- **Keep it reachable on phones** but make sure it does not cover important content or other buttons.
+- **Make it accessible**: include an `aria-label` and enough colour contrast.
+- **Hide it where it does not belong**, such as an admin area.
+- **Also put the link in your main call to action**, not only in the floating button.
+
+## Want it done for you?
+
+Every website I build includes a WhatsApp contact button and a pre-filled message, like the one on this site. Read about [website services](/services#websites), [learn more about me](/about), or try the button yourself on the [contact page](/contact).

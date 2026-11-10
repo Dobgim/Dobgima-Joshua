@@ -9,6 +9,8 @@ export interface PostMeta {
   date: string; // ISO yyyy-mm-dd
   tags: string[];
   draft: boolean;
+  /** Estimated reading time in minutes. */
+  readingMinutes: number;
 }
 
 export interface Post extends PostMeta {
@@ -33,10 +35,13 @@ export function getAllPosts(): Post[] {
         date: String(data.date ?? "1970-01-01"),
         tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
         draft: Boolean(data.draft),
+        readingMinutes: Math.max(1, Math.round(content.split(/\s+/).filter(Boolean).length / 220)),
         content,
       };
     })
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+    .sort((a, b) =>
+      a.draft !== b.draft ? (a.draft ? 1 : -1) : a.date < b.date ? 1 : a.date > b.date ? -1 : a.title.localeCompare(b.title),
+    );
 }
 
 export function getPost(slug: string): Post | undefined {
