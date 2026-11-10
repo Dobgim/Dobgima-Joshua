@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { WHATSAPP_URL } from "@/lib/config";
 
 export function WhatsAppIcon({ className = "h-6 w-6" }: { className?: string }) {
@@ -10,6 +13,8 @@ export function WhatsAppIcon({ className = "h-6 w-6" }: { className?: string }) 
 
 /** Floating "Let's work together" WhatsApp button, bottom-right on every page. */
 export default function WhatsAppButton() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
   return (
     <a
       href={WHATSAPP_URL}

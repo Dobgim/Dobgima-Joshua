@@ -18,11 +18,14 @@ const WELCOME_BOTS = [
   "Applebot-Extended",
 ];
 
+/** Private areas: the admin dashboard and internal API routes. */
+const PRIVATE = ["/admin", "/api/"];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      ...WELCOME_BOTS.map((bot) => ({ userAgent: bot, allow: "/" })),
-      { userAgent: "*", allow: "/" },
+      ...WELCOME_BOTS.map((bot) => ({ userAgent: bot, allow: "/", disallow: PRIVATE })),
+      { userAgent: "*", allow: "/", disallow: PRIVATE },
     ],
     sitemap: absoluteUrl("/sitemap.xml"),
   };

@@ -4,6 +4,8 @@
  * inserting pending reviews and reading approved ones. Server-side only.
  */
 
+import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseHeaders } from "./supabase-public";
+
 export interface Review {
   id: string;
   created_at: string;
@@ -24,46 +26,23 @@ export interface NewReview {
   consent: true;
 }
 
-// Live project "my portfolio". The publishable key is designed to be public:
-// Row-Level Security (supabase/reviews.sql) limits it to inserting pending
-// reviews and reading approved ones. Environment variables override these.
-// Never put a secret key or a personal access token (sbp_...) here.
-const DEFAULT_SUPABASE_URL = "https://eajnbrzgmckxeeohtdrt.supabase.co";
-const DEFAULT_PUBLISHABLE_KEY = "sb_publishable_rW9tdTbdv2LvzNMbsy5I3w_DJqBaokL";
+const SUPABASE_URL_BASE = SUPABASE_URL;
 
-const SUPABASE_URL = (
-  process.env.SUPABASE_URL ??
-  process.env.NEXT_PUBLIC_SUPABASE_URL ??
-  DEFAULT_SUPABASE_URL
-).replace(/\/+$/, "");
-const SUPABASE_ANON_KEY =
-  process.env.SUPABASE_ANON_KEY ??
-  process.env.SUPABASE_PUBLISHABLE_KEY ??
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
-  DEFAULT_PUBLISHABLE_KEY;
+export const reviewsConfigured = Boolean(SUPABASE_URL_BASE && SUPABASE_PUBLISHABLE_KEY);
 
-export const reviewsConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
-
-/** Approved reviews appear on the site within this many seconds. */
+/** Approved reviews appear on the site within this many seconds
+ *  (instantly when approved from /admin, which triggers revalidation). */
 export const REVIEWS_REVALIDATE_SECONDS = 600;
 
 function headers(): HeadersInit {
-  const key = SUPABASE_ANON_KEY ?? "";
-  return {
-    apikey: key,
-    // Legacy anon keys are JWTs and go in Authorization too; new
-    // "sb_publishable_" keys must only be sent as the apikey header.
-    ...(key.startsWith("eyJ") ? { Authorization: `Bearer ${key}` } : {}),
-    "Content-Type": "application/json",
-  };
+  return supabaseHeaders();
 }
 
 export async function getApprovedReviews(): Promise<Review[]> {
   if (!reviewsConfigured) return [];
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/reviews?select=id,created_at,name,company,project,rating,body&order=created_at.desc`,
+      `${SUPABASE_URL_BASE}/rest/v1/reviews?select=id,created_at,name,company,project,rating,body&order=created_at.desc`,
       {
         headers: headers(),
         next: { revalidate: REVIEWS_REVALIDATE_SECONDS, tags: ["reviews"] },
@@ -79,7 +58,7 @@ export async function getApprovedReviews(): Promise<Review[]> {
 export async function insertReview(review: NewReview): Promise<boolean> {
   if (!reviewsConfigured) return false;
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
+    const res = await fetch(`${SUPABASE_URL_BASE}/rest/v1/reviews`, {
       method: "POST",
       headers: { ...headers(), Prefer: "return=minimal" },
       body: JSON.stringify(review),
