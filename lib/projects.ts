@@ -134,25 +134,26 @@ export const projects: Project[] = [
     slug: "cushman-golf-carts",
     name: "Cushman Golf Carts SA",
     tagline: "Golf cart sales, hire and parts website for a South African dealer.",
-    role: "Developer",
+    role: "Developer, SEO & maintenance",
     liveUrl: "https://cushmancarts.co.za",
     featured: false,
     schemaType: "CreativeWork",
-    techStack: ["React", "PHP", "Hostinger"],
+    techStack: ["React", "PHP", "Hostinger", "SEO"],
     problem:
       "A golf cart dealer in Bloemfontein needed a professional online showroom to reach buyers and hire customers across South Africa, and to turn visitors into enquiries.",
     whatIBuilt:
       "The website for Cushman Golf Carts SA, presenting new and used electric and petrol golf carts for sale and hire, plus spare parts, batteries, repairs and nationwide delivery.",
     myRole:
-      "Dobgima Joshua Foncham designed and developed the website and deployed it on Hostinger, including the enquiry form that delivers customer messages by email.",
+      "Dobgima Joshua Foncham designed and developed the website, deployed it on Hostinger, and runs its SEO and ongoing maintenance, including the enquiry form that delivers customer messages by email.",
     keyFeatures: [
       "Showroom for new and used electric and petrol golf carts",
       "Sale and hire options, spare parts, batteries and repairs",
       "Quote and financing enquiries through a PHP contact form with email delivery",
       "WhatsApp contact and nationwide delivery information",
-      "Search-friendly page titles and descriptions for South African customers",
+      "SEO for South African search: page titles, descriptions and structured content for golf cart sales and hire",
+      "Ongoing maintenance: updates, fixes and keeping the site fast and online",
     ],
-    result: "Live at cushmancarts.co.za.",
+    result: "Live at cushmancarts.co.za, with SEO and maintenance ongoing.",
   },
   {
     slug: "welearn",
