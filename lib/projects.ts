@@ -156,6 +156,33 @@ export const projects: Project[] = [
     result: "Live at cushmancarts.co.za, with SEO and maintenance ongoing.",
   },
   {
+    slug: "logistics-tracking-platform",
+    name: "Logistics Tracking Platform",
+    tagline: "Logistics websites with live shipment tracking, quotes and an admin dashboard.",
+    role: "Developer",
+    liveUrl: null,
+    liveUrlNote: "Built for logistics businesses. A walkthrough or demo is available on request.",
+    featured: false,
+    schemaType: "SoftwareApplication",
+    applicationCategory: "BusinessApplication",
+    techStack: ["React", "Vite", "Tailwind CSS", "Supabase", "WordPress", "WooCommerce"],
+    problem:
+      "Logistics and freight businesses need customers to track shipments on their own, request quotes and see delivery progress, while staff need one place to create shipments and keep every status up to date.",
+    whatIBuilt:
+      "Logistics platforms with a public tracking page, a route map showing each shipment's journey, quote and fee requests, and an admin dashboard for managing shipments. Built both as a custom React and Supabase application and as a WordPress and WooCommerce site.",
+    myRole:
+      "Dobgima Joshua Foncham designed and developed the platforms end to end: the customer-facing website, the tracking experience, the admin dashboard and the database.",
+    keyFeatures: [
+      "Public tracking by shipment code, with a route map of the journey",
+      "Status workflow: Pending, Picked Up, In Transit, Out for Delivery, Delivered and On Hold",
+      "Admin dashboard to create shipments and update status, location and details",
+      "Printable PDF shipment invoices with barcodes and QR codes",
+      "Quote requests, fee calculation and service pages for freight, warehousing and e-commerce fulfilment",
+      "Supabase database for shipments and settings",
+    ],
+    result: "Delivered for logistics businesses; client sites are not linked here.",
+  },
+  {
     slug: "welearn",
     name: "WeLearn",
     tagline: "EdTech startup for Cameroon.",
