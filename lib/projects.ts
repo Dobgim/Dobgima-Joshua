@@ -156,6 +156,31 @@ export const projects: Project[] = [
     result: "Live at cushmancarts.co.za, with SEO and maintenance ongoing.",
   },
   {
+    slug: "best-golf-carts-usa",
+    name: "Best Golf Carts USA",
+    tagline: "E-commerce store for golf cart parts and accessories across the USA.",
+    role: "Developer",
+    liveUrl: "https://bestgolfcartsusa.com",
+    featured: false,
+    schemaType: "SoftwareApplication",
+    applicationCategory: "ShoppingApplication",
+    techStack: ["React", "Vite", "Supabase", "Stripe", "Hostinger"],
+    problem:
+      "Golf cart owners need an easy way to find the right parts and upgrades for their make and model, and buy them online with fast delivery anywhere in the United States.",
+    whatIBuilt:
+      "Best Golf Carts USA, an online store for golf cart parts and accessories for Club Car, EZGO and Yamaha carts, from brakes and lift kits to lithium batteries, motors, wheels and tires.",
+    myRole:
+      "Dobgima Joshua Foncham designed and developed the store: the product catalogue, search, cart, checkout and customer features, backed by Supabase and deployed on Hostinger.",
+    keyFeatures: [
+      "Product catalogue with categories for parts, accessories, tires and wheels",
+      "Product search, wishlist and shopping cart",
+      "Secure card checkout with Stripe",
+      "Customer accounts and order tracking by order ID",
+      "Blog and search-friendly pages for golf cart parts",
+    ],
+    result: "Live at bestgolfcartsusa.com.",
+  },
+  {
     slug: "logistics-tracking-platform",
     name: "Logistics Tracking Platform",
     tagline: "Logistics websites with live shipment tracking, quotes and an admin dashboard.",
