@@ -7,7 +7,7 @@ import { projectListSchema, webPageSchema } from "@/lib/schema";
 import { FULL_NAME } from "@/lib/config";
 import { projects } from "@/lib/projects";
 
-const description = `Projects by ${FULL_NAME}: MotorWise, Home237, Merit Leaders, FoodieExpress, WeLearn and more, with full case studies.`;
+const description = `Projects by ${FULL_NAME}: MotorWise, Home237, Merit Leaders, FoodieExpress, Cushman Golf Carts SA and more, with case studies.`;
 
 export const metadata: Metadata = {
   title: "Projects",

@@ -131,6 +131,30 @@ export const projects: Project[] = [
     result: "Live on Vercel.",
   },
   {
+    slug: "cushman-golf-carts",
+    name: "Cushman Golf Carts SA",
+    tagline: "Golf cart sales, hire and parts website for a South African dealer.",
+    role: "Developer",
+    liveUrl: "https://cushmancarts.co.za",
+    featured: false,
+    schemaType: "CreativeWork",
+    techStack: ["React", "PHP", "Hostinger"],
+    problem:
+      "A golf cart dealer in Bloemfontein needed a professional online showroom to reach buyers and hire customers across South Africa, and to turn visitors into enquiries.",
+    whatIBuilt:
+      "The website for Cushman Golf Carts SA, presenting new and used electric and petrol golf carts for sale and hire, plus spare parts, batteries, repairs and nationwide delivery.",
+    myRole:
+      "Dobgima Joshua Foncham designed and developed the website and deployed it on Hostinger, including the enquiry form that delivers customer messages by email.",
+    keyFeatures: [
+      "Showroom for new and used electric and petrol golf carts",
+      "Sale and hire options, spare parts, batteries and repairs",
+      "Quote and financing enquiries through a PHP contact form with email delivery",
+      "WhatsApp contact and nationwide delivery information",
+      "Search-friendly page titles and descriptions for South African customers",
+    ],
+    result: "Live at cushmancarts.co.za.",
+  },
+  {
     slug: "welearn",
     name: "WeLearn",
     tagline: "EdTech startup for Cameroon.",
