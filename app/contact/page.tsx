@@ -12,7 +12,7 @@ import {
   WHATSAPP_URL,
 } from "@/lib/config";
 
-const description = `Contact ${FULL_NAME}, software engineer in ${LOCATIONS_LABEL}. Reach him on WhatsApp, by email, LinkedIn or Upwork, for freelance and remote work.`;
+const description = `Contact ${FULL_NAME}, software engineer in Buea and Yaoundé, Cameroon, on WhatsApp, email, LinkedIn or Upwork.`;
 
 export const metadata: Metadata = {
   title: "Contact",

@@ -11,12 +11,12 @@ import ServiceIcon from "@/components/ServiceIcon";
 import { services } from "@/lib/services";
 import { getAllPosts } from "@/lib/blog";
 import {
-  DEFINITION_SENTENCE,
   EDUCATION,
   EMAIL,
   EMPLOYER,
   FULL_NAME,
   HOME_TITLE,
+  HOME_DESCRIPTION,
   LOCATIONS_LABEL,
   WHATSAPP_URL,
 } from "@/lib/config";
@@ -26,10 +26,10 @@ import { personSchema, webSiteSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
-  description: DEFINITION_SENTENCE,
+  description: HOME_DESCRIPTION,
   alternates: { canonical: "/" },
-  openGraph: { title: HOME_TITLE, description: DEFINITION_SENTENCE, url: "/" },
-  twitter: { title: HOME_TITLE, description: DEFINITION_SENTENCE },
+  openGraph: { title: HOME_TITLE, description: HOME_DESCRIPTION, url: "/" },
+  twitter: { title: HOME_TITLE, description: HOME_DESCRIPTION },
 };
 
 export const revalidate = 60;

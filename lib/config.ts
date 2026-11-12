@@ -33,6 +33,15 @@ export const LOCATIONS_LABEL = "Buea & Yaoundé, Cameroon";
 export const DEFINITION_SENTENCE =
   "Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea who builds web, mobile and AI products with Next.js, Flutter, Supabase and Firebase. He is the founder of MotorWise, an AI vehicle maintenance platform, and a graduate of Landmark Metropolitan University Institute (LMUI).";
 
+/** Short meta description (Bing and Google prefer 25 to 160 characters). The
+ *  full DEFINITION_SENTENCE stays in page content, JSON-LD and llms.txt. */
+export const META_DESCRIPTION =
+  "Dobgima Joshua Foncham is a Cameroonian software engineer in Buea building web, mobile and AI products. Founder of MotorWise and Home237.";
+export const HOME_DESCRIPTION =
+  "Software engineer in Buea and Yaoundé, Cameroon. I build websites, mobile apps and AI automation for businesses. Founder of MotorWise and Home237.";
+export const ABOUT_DESCRIPTION =
+  "About Dobgima Joshua Foncham: Cameroonian software engineer, LMUI graduate and founder of MotorWise and Home237. His story, skills and work.";
+
 export const PHOTO_PATH = "/dobgima-joshua-foncham.png";
 
 const WHATSAPP_MESSAGE =

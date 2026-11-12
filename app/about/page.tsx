@@ -4,6 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { WhatsAppIcon } from "@/components/WhatsAppButton";
 import {
+  ABOUT_DESCRIPTION,
   BIRTH_DATE_DISPLAY,
   DEFINITION_SENTENCE,
   EDUCATION,
@@ -23,11 +24,11 @@ import { profilePageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: `About ${FULL_NAME}`,
-  description: DEFINITION_SENTENCE,
+  description: ABOUT_DESCRIPTION,
   alternates: { canonical: "/about" },
   openGraph: {
     title: `About ${FULL_NAME}`,
-    description: DEFINITION_SENTENCE,
+    description: ABOUT_DESCRIPTION,
     url: "/about",
   },
 };

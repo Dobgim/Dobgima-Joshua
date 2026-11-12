@@ -9,6 +9,8 @@ export interface PostMeta {
   date: string; // ISO yyyy-mm-dd
   tags: string[];
   draft: boolean;
+  /** Optional short title for search results (under 60 characters). */
+  seoTitle?: string;
   /** Estimated reading time in minutes. */
   readingMinutes: number;
 }
@@ -35,6 +37,7 @@ export function getAllPosts(): Post[] {
         date: String(data.date ?? "1970-01-01"),
         tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
         draft: Boolean(data.draft),
+        seoTitle: data.seoTitle ? String(data.seoTitle) : undefined,
         readingMinutes: Math.max(1, Math.round(content.split(/\s+/).filter(Boolean).length / 220)),
         content,
       };

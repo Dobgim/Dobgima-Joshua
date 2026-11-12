@@ -7,7 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 import {
-  DEFINITION_SENTENCE,
+  META_DESCRIPTION,
   DOMAIN,
   FULL_NAME,
   HOME_TITLE,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: HOME_TITLE,
     template: `%s | ${FULL_NAME}`,
   },
-  description: DEFINITION_SENTENCE,
+  description: META_DESCRIPTION,
   authors: [{ name: FULL_NAME, url: DOMAIN }],
   creator: FULL_NAME,
   openGraph: {
