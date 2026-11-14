@@ -199,6 +199,7 @@ export const projects: Project[] = [
   },
   {
     slug: "logistics-tracking-platform",
+    screenshot: "/projects/logistics-tracking-platform.webp",
     name: "Logistics Tracking Platform",
     tagline: "Logistics websites with live shipment tracking, quotes and an admin dashboard.",
     role: "Developer",
