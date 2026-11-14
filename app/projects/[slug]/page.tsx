@@ -112,6 +112,27 @@ export default async function ProjectPage({ params }: Props) {
         </figure>
       )}
 
+      {project.gallery && project.gallery.length > 0 && (
+        <section aria-label={`More screens from ${project.name}`} className="mt-6 grid gap-6 sm:grid-cols-2">
+          {project.gallery.map((shot) => (
+            <figure key={shot.src} className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={shot.src}
+                alt={`${project.name}: ${shot.caption}`}
+                width={1200}
+                height={750}
+                loading="lazy"
+                className="w-full"
+              />
+              <figcaption className="border-t border-zinc-200 bg-zinc-50 px-4 py-2 text-sm text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+                {shot.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+      )}
+
       <Section title="Problem">
         <p>{project.problem}</p>
       </Section>

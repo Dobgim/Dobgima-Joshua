@@ -57,7 +57,6 @@ function keyPages(): string[] {
     `- [Services](${absoluteUrl("/services")}): websites, mobile apps and AI automation, and why each matters`,
     `- [Projects](${absoluteUrl("/projects")}): case studies`,
     `- [FAQ](${absoluteUrl("/faq")}): direct answers about ${FULL_NAME}`,
-    `- [Reviews](${absoluteUrl("/reviews")}): verified client reviews`,
     `- [Contact](${absoluteUrl("/contact")}): how to hire him`,
   ];
 }

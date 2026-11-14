@@ -3,6 +3,7 @@ import { FULL_NAME } from "@/lib/config";
 import HeaderShell from "./HeaderShell";
 import ThemeToggle from "./ThemeToggle";
 import MobileMenu from "./MobileMenu";
+import { getApprovedReviews } from "@/lib/reviews";
 
 const nav = [
   { href: "/about", label: "About" },
@@ -14,7 +15,10 @@ const nav = [
   { href: "/contact", label: "Contact" },
 ];
 
-export default function Header() {
+export default async function Header() {
+  // Reviews only appear in the menu once at least one real review is approved.
+  const hasReviews = (await getApprovedReviews()).length > 0;
+  const items = hasReviews ? nav : nav.filter((n) => n.href !== "/reviews");
   return (
     <HeaderShell>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
@@ -27,7 +31,7 @@ export default function Header() {
         <div className="flex shrink-0 items-center gap-2">
           <nav aria-label="Main navigation" className="hidden lg:block">
             <ul className="flex items-center gap-1 text-sm">
-              {nav.map((item) => (
+              {items.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -40,7 +44,7 @@ export default function Header() {
             </ul>
           </nav>
           <ThemeToggle />
-          <MobileMenu />
+          <MobileMenu showReviews={hasReviews} />
         </div>
       </div>
     </HeaderShell>

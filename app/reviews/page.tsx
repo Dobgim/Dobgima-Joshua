@@ -11,12 +11,17 @@ export const revalidate = 60;
 
 const description = `Reviews from real clients of ${FULL_NAME}, software engineer in Buea, Cameroon, and a form for clients to leave their own review.`;
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  // Kept out of search results until at least one real review is approved.
+  const hasReviews = (await getApprovedReviews()).length > 0;
+  return {
   title: "Client reviews",
   description,
   alternates: { canonical: "/reviews" },
   openGraph: { title: `Client reviews for ${FULL_NAME}`, description, url: "/reviews" },
-};
+    ...(hasReviews ? {} : { robots: { index: false, follow: true } }),
+  };
+}
 
 export default async function ReviewsPage() {
   const reviews = await getApprovedReviews();

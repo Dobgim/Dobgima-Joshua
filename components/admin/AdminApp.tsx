@@ -64,7 +64,7 @@ export default function AdminApp() {
         </button>
       </div>
     );
-  return <Dashboard session={session} />;
+  return <AdminShell session={session} />;
 }
 
 /* ───────────────────────── Login ───────────────────────── */
@@ -148,7 +148,171 @@ function LoginForm() {
   );
 }
 
+/* ───────────────────────── Shell: Reviews | Enquiries ───────────────────────── */
+
+function AdminShell({ session }: { session: Session }) {
+  const [section, setSection] = useState<"enquiries" | "reviews">("enquiries");
+  return (
+    <div>
+      <nav aria-label="Admin sections" className="mb-6 inline-flex rounded-lg bg-zinc-100 p-1 text-sm font-semibold dark:bg-zinc-800">
+        {(["enquiries", "reviews"] as const).map((key) => (
+          <button
+            key={key}
+            onClick={() => setSection(key)}
+            aria-pressed={section === key}
+            className={`rounded-md px-4 py-2 capitalize transition-colors ${section === key ? "bg-white text-zinc-950 shadow-sm dark:bg-zinc-950 dark:text-white" : "text-zinc-600 dark:text-zinc-400"}`}
+          >
+            {key}
+          </button>
+        ))}
+      </nav>
+      {section === "reviews" ? <Dashboard session={session} /> : <EnquiriesPanel session={session} />}
+    </div>
+  );
+}
+
+type EnquiryStatus = "new" | "contacted" | "closed";
+
+interface Enquiry {
+  id: string;
+  created_at: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  project_type: string;
+  budget: string;
+  description: string;
+  status: EnquiryStatus;
+}
+
+function EnquiriesPanel({ session }: { session: Session }) {
+  const supabase = getSupabaseBrowser();
+  const [items, setItems] = useState<Enquiry[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [tab, setTab] = useState<EnquiryStatus | "all">("new");
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    const { data, error } = await supabase.from("enquiries").select("*").order("created_at", { ascending: false });
+    if (error) setError(error.message);
+    else { setItems(data as Enquiry[]); setError(null); }
+    setLoading(false);
+  }, [supabase]);
+
+  useEffect(() => { load(); }, [load]);
+
+  const counts = useMemo(() => {
+    const c = { new: 0, contacted: 0, closed: 0, all: items.length };
+    for (const i of items) c[i.status]++;
+    return c;
+  }, [items]);
+
+  async function setStatus(item: Enquiry, status: EnquiryStatus) {
+    setBusyId(item.id);
+    const { error } = await supabase.from("enquiries").update({ status }).eq("id", item.id);
+    if (error) setError(error.message);
+    else setItems((list) => list.map((x) => (x.id === item.id ? { ...x, status } : x)));
+    setBusyId(null);
+  }
+
+  async function remove(item: Enquiry) {
+    if (!window.confirm(`Delete the enquiry from ${item.name}? This cannot be undone.`)) return;
+    setBusyId(item.id);
+    const { error } = await supabase.from("enquiries").delete().eq("id", item.id);
+    if (error) setError(error.message);
+    else setItems((list) => list.filter((x) => x.id !== item.id));
+    setBusyId(null);
+  }
+
+  const visible = tab === "all" ? items : items.filter((i) => i.status === tab);
+  const tabs: { key: EnquiryStatus | "all"; label: string }[] = [
+    { key: "new", label: "New" },
+    { key: "contacted", label: "Contacted" },
+    { key: "closed", label: "Closed" },
+    { key: "all", label: "All" },
+  ];
+
+  return (
+    <div className="py-4">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="text-sm font-semibold text-sky-700 dark:text-sky-400">Admin</p>
+          <h1 className="mt-1 text-3xl font-bold tracking-tight text-zinc-950 dark:text-white">Project enquiries</h1>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Signed in as {session.user.email}</p>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={load} className={`${btn} border border-zinc-300 text-zinc-800 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800`}>Refresh</button>
+          <button onClick={() => supabase.auth.signOut()} className={`${btn} bg-zinc-950 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950`}>Sign out</button>
+        </div>
+      </div>
+
+      <div role="tablist" aria-label="Filter enquiries" className="mt-8 flex flex-wrap gap-2 border-b border-zinc-200 dark:border-zinc-800">
+        {tabs.map((t) => (
+          <button
+            key={t.key}
+            role="tab"
+            aria-selected={tab === t.key}
+            onClick={() => setTab(t.key)}
+            className={`-mb-px border-b-2 px-4 py-2.5 text-sm font-semibold transition-colors ${tab === t.key ? "border-sky-700 text-sky-700 dark:border-sky-400 dark:text-sky-400" : "border-transparent text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"}`}
+          >
+            {t.label} <span className="ml-1 rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">{counts[t.key]}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-6 space-y-4">
+        {loading && <p className="py-10 text-center text-zinc-500">Loading enquiries…</p>}
+        {error && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-800 dark:bg-red-950/40 dark:text-red-300">{error}</p>}
+        {!loading && !error && visible.length === 0 && (
+          <p className="rounded-2xl border border-dashed border-zinc-300 py-12 text-center text-zinc-500 dark:border-zinc-700">
+            {tab === "new" ? "No new enquiries." : "Nothing here yet."}
+          </p>
+        )}
+        {visible.map((i) => {
+          const reply = `mailto:${i.email}?subject=${encodeURIComponent(`Your ${i.project_type.toLowerCase()} enquiry`)}`;
+          const wa = i.phone ? `https://wa.me/${i.phone.replace(/[^\d]/g, "")}` : null;
+          return (
+            <article key={i.id} className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <p className="font-semibold text-zinc-950 dark:text-white">{i.name}</p>
+                  <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
+                    <a href={reply} className="underline-offset-4 hover:underline">{i.email}</a>
+                    {i.phone && <> · {i.phone}</>} · {new Date(i.created_at).toLocaleString()}
+                  </p>
+                </div>
+                <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold capitalize ${i.status === "new" ? "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300" : i.status === "contacted" ? "bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300" : "bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"}`}>
+                  {i.status}
+                </span>
+              </div>
+              <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm">
+                <div><dt className="text-zinc-500 dark:text-zinc-400">Project type</dt><dd className="font-semibold text-zinc-900 dark:text-zinc-100">{i.project_type}</dd></div>
+                <div><dt className="text-zinc-500 dark:text-zinc-400">Budget</dt><dd className="font-semibold text-zinc-900 dark:text-zinc-100">{i.budget}</dd></div>
+              </dl>
+              <p className="mt-4 whitespace-pre-line leading-relaxed text-zinc-700 dark:text-zinc-300">{i.description}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                <a href={reply} className={`${btn} bg-zinc-950 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950`}>Reply by email</a>
+                {wa && <a href={wa} target="_blank" rel="noopener" className={`${btn} bg-[#25D366] text-white hover:bg-[#1ebe5a]`}>WhatsApp</a>}
+                {i.status !== "contacted" && (
+                  <button disabled={busyId === i.id} onClick={() => setStatus(i, "contacted")} className={`${btn} border border-zinc-300 text-zinc-800 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800`}>Mark contacted</button>
+                )}
+                {i.status !== "closed" && (
+                  <button disabled={busyId === i.id} onClick={() => setStatus(i, "closed")} className={`${btn} text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800`}>Close</button>
+                )}
+                <button disabled={busyId === i.id} onClick={() => remove(i)} className={`${btn} ml-auto text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40`}>Delete</button>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 /* ───────────────────────── Dashboard ───────────────────────── */
+
 
 function Dashboard({ session }: { session: Session }) {
   const supabase = getSupabaseBrowser();

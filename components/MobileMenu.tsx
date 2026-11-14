@@ -20,7 +20,8 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
-export default function MobileMenu() {
+export default function MobileMenu({ showReviews = false }: { showReviews?: boolean }) {
+  const visibleLinks = showReviews ? links : links.filter((l) => l.href !== "/reviews");
   const ref = useRef<HTMLDetailsElement>(null);
   const pathname = usePathname();
 
@@ -71,7 +72,7 @@ export default function MobileMenu() {
         className="absolute right-0 top-full z-50 mt-2 w-56 max-w-[calc(100vw-2rem)] rounded-xl border border-zinc-200 bg-white p-2 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
       >
         <ul>
-          {links.map((link) => {
+          {visibleLinks.map((link) => {
             const active = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
             return (
               <li key={link.href}>

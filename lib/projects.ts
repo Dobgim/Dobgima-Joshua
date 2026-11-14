@@ -19,6 +19,8 @@ export interface Project {
   kind?: ProjectKind;
   /** Screenshot of the finished product in /public/projects. */
   screenshot?: string;
+  /** Extra screenshots of inner pages and app screens. */
+  gallery?: { src: string; caption: string }[];
 }
 
 export type ProjectKind = "Own product" | "Co-founded startup" | "Client project" | "Demo";
@@ -26,6 +28,9 @@ export type ProjectKind = "Own product" | "Co-founded startup" | "Client project
 export const projects: Project[] = [
   {
     slug: "motorwise",
+    gallery: [
+      { src: "/projects/motorwise--demo.webp", caption: "Live demo: fleet dashboard with vehicles, repair costs and upcoming maintenance" },
+    ],
     screenshot: "/projects/motorwise.webp",
     kind: "Own product",
     name: "MotorWise",
@@ -100,6 +105,9 @@ export const projects: Project[] = [
   },
   {
     slug: "yadims-fabrics",
+    gallery: [
+      { src: "/projects/yadims-fabrics--shop.webp", caption: "Fabric shop with filters by category and collection" },
+    ],
     screenshot: "/projects/yadims-fabrics.webp",
     name: "YADIMS Fabrics & Seams",
     tagline: "E-commerce website for a fabric and lace business.",
@@ -145,6 +153,10 @@ export const projects: Project[] = [
   },
   {
     slug: "cushman-golf-carts",
+    gallery: [
+      { src: "/projects/cushman-golf-carts--inventory.webp", caption: "Inventory page with search and category filters" },
+      { src: "/projects/cushman-golf-carts--brand.webp", caption: "Brand landing page targeting Club Car searches in South Africa" },
+    ],
     screenshot: "/projects/cushman-golf-carts.webp",
     kind: "Client project",
     name: "Cushman Golf Carts SA",
@@ -172,6 +184,10 @@ export const projects: Project[] = [
   },
   {
     slug: "best-golf-carts-usa",
+    gallery: [
+      { src: "/projects/best-golf-carts-usa--shop.webp", caption: "Shop page with category filters, sorting and product grid" },
+      { src: "/projects/best-golf-carts-usa--product.webp", caption: "Product page with specifications, price and enquiry actions" },
+    ],
     screenshot: "/projects/best-golf-carts-usa.webp",
     kind: "Client project",
     name: "Best Golf Carts USA",

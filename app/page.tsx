@@ -44,6 +44,39 @@ function ArrowRight({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
+const reasons = [
+  {
+    title: "A clear process",
+    body: "We agree the goal first, then I plan, design and build in stages, and launch with search engine setup done. You always know what happens next.",
+    icon: <path d="M4 6h10M4 12h16M4 18h7M17 4l3 2-3 2M14 16l3 2-3 2" />,
+  },
+  {
+    title: "Regular communication",
+    body: "Progress updates on WhatsApp or email, and working previews you can click through and comment on before anything goes live.",
+    icon: <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />,
+  },
+  {
+    title: "Built to bring in customers",
+    body: "Fast pages on everyday phones, search engine setup and clear WhatsApp and contact buttons, so visitors can find you and get in touch.",
+    icon: <path d="M3 17l6-6 4 4 8-8M14 7h7v7" />,
+  },
+  {
+    title: "Support after launch",
+    body: "I stay available after your site goes live for fixes, updates and ongoing maintenance as your business grows.",
+    icon: <path d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2M21 3v6h-6" />,
+  },
+  {
+    title: "Secure and dependable",
+    body: "Customer data is protected with proper database rules and secure sign-in, and sites run on reliable hosting with HTTPS.",
+    icon: <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3zM9 12l2 2 4-4" />,
+  },
+  {
+    title: "Proven on real products",
+    body: "Founder of MotorWise and Home237, with websites built for businesses in Cameroon, South Africa and the United States.",
+    icon: <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z" />,
+  },
+];
+
 const sectionTitle =
   "text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50";
 const eyebrow =
@@ -327,6 +360,37 @@ export default async function HomePage() {
           className="mt-8 inline-flex items-center gap-1 font-semibold text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
         >
           All projects <ArrowRight />
+        </Link>
+      </section>
+
+      {/* ───────── Why work with me ───────── */}
+      <section aria-labelledby="why-heading" data-reveal className="py-16 text-center">
+        <p className={eyebrow}>Why work with me?</p>
+        <h2 id="why-heading" className={`mt-3 ${sectionTitle}`}>
+          A clear process, honest communication and support after launch
+        </h2>
+        <div data-reveal-group className="mt-12 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
+          {reasons.map((r) => (
+            <article
+              key={r.title}
+              data-reveal
+              className="lift rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-400">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                  {r.icon}
+                </svg>
+              </span>
+              <h3 className="mt-4 text-lg font-semibold text-zinc-900 dark:text-zinc-50">{r.title}</h3>
+              <p className="mt-2 leading-relaxed text-zinc-600 dark:text-zinc-400">{r.body}</p>
+            </article>
+          ))}
+        </div>
+        <Link
+          href="/contact#enquiry"
+          className="btn-lift mt-10 inline-flex items-center gap-2 rounded-lg bg-zinc-950 px-6 py-3.5 font-semibold text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+        >
+          Start a project enquiry <ArrowRight />
         </Link>
       </section>
 
