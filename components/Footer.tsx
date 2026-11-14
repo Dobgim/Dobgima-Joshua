@@ -24,8 +24,8 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 text-center">
         <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">{FULL_NAME}</p>
         <p className="mx-auto mt-2 max-w-xl text-sm text-zinc-600 dark:text-zinc-400">
-          Software engineer in {LOCATIONS_LABEL}, building fast, reliable web and
-          mobile products with Next.js, Flutter, Supabase and Firebase. Founder of
+          Software engineer in {LOCATIONS_LABEL}, helping small and medium-sized
+          businesses build professional websites and web applications. Founder of
           MotorWise and Home237.
         </p>
         <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">

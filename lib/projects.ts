@@ -15,11 +15,19 @@ export interface Project {
   myRole: string;
   keyFeatures: string[];
   result: string;
+  /** Honest label: whose project it is. Left out until confirmed. */
+  kind?: ProjectKind;
+  /** Screenshot of the finished product in /public/projects. */
+  screenshot?: string;
 }
+
+export type ProjectKind = "Own product" | "Co-founded startup" | "Client project" | "Demo";
 
 export const projects: Project[] = [
   {
     slug: "motorwise",
+    screenshot: "/projects/motorwise.webp",
+    kind: "Own product",
     name: "MotorWise",
     tagline: "Fleet maintenance platform for vehicle operators.",
     role: "Founder",
@@ -40,10 +48,11 @@ export const projects: Project[] = [
       "AI-assisted vehicle maintenance guidance",
     ],
     result:
-      "Live at motorwise.co. [PLACEHOLDER: current status/traction, e.g. pilot customers or active fleets, no numbers invented]",
+      "Live at motorwise.co and open for sign-ups, with a free plan for up to 2 vehicles. Available in English and French.",
   },
   {
     slug: "merit-leaders",
+    screenshot: "/projects/merit-leaders.webp",
     name: "Merit Leaders",
     tagline: "Scholarship and fellowship platform for international students.",
     role: "Developer",
@@ -57,7 +66,7 @@ export const projects: Project[] = [
     whatIBuilt:
       "Merit Leaders, a platform that helps undergraduate, graduate, postgraduate and international students find, apply for and win fully funded scholarships worldwide, with expert application, SOP, visa and interview support.",
     myRole:
-      "Dobgima Joshua Foncham built the Merit Leaders web platform. [PLACEHOLDER: confirm your exact role, e.g. sole developer or co-founder]",
+      "Dobgima Joshua Foncham built the Merit Leaders web platform.",
     keyFeatures: [
       "Scholarship and fellowship matching for students at every level",
       "End-to-end application support: SOP, visa and interview preparation",
@@ -67,6 +76,8 @@ export const projects: Project[] = [
   },
   {
     slug: "home237",
+    screenshot: "/projects/home237.webp",
+    kind: "Own product",
     name: "Home237",
     tagline: "Property rental platform for Cameroon.",
     role: "Founder",
@@ -85,10 +96,11 @@ export const projects: Project[] = [
       "Online property listings for the Cameroonian market",
       "Deployed and running in production",
     ],
-    result: "Live at home237.com. [PLACEHOLDER: current status, e.g. number of listings or cities covered]",
+    result: "Website live at home237.com, with Android and iOS apps announced as coming soon.",
   },
   {
     slug: "yadims-fabrics",
+    screenshot: "/projects/yadims-fabrics.webp",
     name: "YADIMS Fabrics & Seams",
     tagline: "E-commerce website for a fabric and lace business.",
     role: "Developer",
@@ -109,6 +121,7 @@ export const projects: Project[] = [
   },
   {
     slug: "foodieexpress",
+    screenshot: "/projects/foodieexpress.webp",
     name: "FoodieExpress",
     tagline: "Online food ordering and delivery store.",
     role: "Developer",
@@ -132,6 +145,8 @@ export const projects: Project[] = [
   },
   {
     slug: "cushman-golf-carts",
+    screenshot: "/projects/cushman-golf-carts.webp",
+    kind: "Client project",
     name: "Cushman Golf Carts SA",
     tagline: "Golf cart sales, hire and parts website for a South African dealer.",
     role: "Developer, SEO & maintenance",
@@ -157,6 +172,8 @@ export const projects: Project[] = [
   },
   {
     slug: "best-golf-carts-usa",
+    screenshot: "/projects/best-golf-carts-usa.webp",
+    kind: "Client project",
     name: "Best Golf Carts USA",
     tagline: "E-commerce store for golf cart parts and accessories across the USA.",
     role: "Developer",
@@ -209,6 +226,8 @@ export const projects: Project[] = [
   },
   {
     slug: "welearn",
+    screenshot: "/projects/welearn.webp",
+    kind: "Co-founded startup",
     name: "WeLearn",
     tagline: "EdTech startup for Cameroon.",
     role: "Co-founder",
@@ -224,7 +243,7 @@ export const projects: Project[] = [
     myRole: "Co-founder and engineer, building the product with a colleague.",
     keyFeatures: ["EdTech platform in active development"],
     result:
-      "In progress at welearncm.org. [PLACEHOLDER: current stage, e.g. beta, pilot schools]",
+      "In active development at welearncm.org.",
   },
   {
     slug: "school-management-system",
@@ -232,7 +251,7 @@ export const projects: Project[] = [
     tagline: "Management software for schools in Cameroon.",
     role: "Developer",
     liveUrl: null,
-    liveUrlNote: "[PLACEHOLDER: live URL of the School Management System]",
+    liveUrlNote: "Built for schools in Cameroon. A walkthrough or demo is available on request.",
     featured: false,
     schemaType: "SoftwareApplication",
     applicationCategory: "BusinessApplication",
@@ -246,10 +265,11 @@ export const projects: Project[] = [
       "Student and class administration",
       "Built for the needs of schools in Cameroon",
     ],
-    result: "Built and delivered. [PLACEHOLDER: deployment status and live URL]",
+    result: "Built for schools in Cameroon; a demo is available on request.",
   },
   {
     slug: "booking-system",
+    kind: "Demo",
     name: "Booking System (demo)",
     tagline: "A booking system demo application.",
     role: "Developer",

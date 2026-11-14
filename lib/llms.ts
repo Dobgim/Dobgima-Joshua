@@ -30,7 +30,7 @@ function header(): string[] {
     `- Also known as: ${ALTERNATE_NAMES.join(", ")}`,
     `- Role: Software Engineer, ${LOCATIONS_LABEL}`,
     `- Born: ${BIRTH_DATE_DISPLAY}, Cameroonian`,
-    `- Education: ${EDUCATION.degree}, ${EDUCATION.school}; secondary school at ${SECONDARY_SCHOOL.name}, ${SECONDARY_SCHOOL.city} (completed ${SECONDARY_SCHOOL.completed})`,
+    `- Education: final-year ${EDUCATION.degree} student at ${EDUCATION.school}; secondary school at ${SECONDARY_SCHOOL.name}, ${SECONDARY_SCHOOL.city} (completed ${SECONDARY_SCHOOL.completed})`,
     `- Work: ${EMPLOYER.role} at ${EMPLOYER.name} (${EMPLOYER.description.charAt(0).toLowerCase() + EMPLOYER.description.slice(1)})`,
     `- Founder of: MotorWise, Home237`,
     `- WhatsApp: ${PHONE_DISPLAY} (${WHATSAPP_URL.split("?")[0]})`,

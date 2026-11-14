@@ -1,6 +1,6 @@
 # Dobgima Joshua Foncham
 
-Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea who builds web, mobile and AI products with Next.js, Flutter, Supabase and Firebase. He is the founder of MotorWise, an AI vehicle maintenance platform, and a graduate of Landmark Metropolitan University Institute (LMUI).
+Dobgima Joshua Foncham is a Cameroonian software engineer based in Buea who builds web, mobile and AI products with Next.js, Flutter, Supabase and Firebase. He is the founder of MotorWise, an AI vehicle maintenance platform, and a final-year Software Engineering student at Landmark Metropolitan University Institute (LMUI).
 
 - 💼 Remote IT staff at **ConsultStudyBridge** (Africa-to-Japan education and travel consultancy)
 - 🚗 Founder of **[MotorWise](https://www.motorwise.co)** — AI Fleet Maintenance Copilot, multi-tenant SaaS on Supabase PostgreSQL with Row-Level Security

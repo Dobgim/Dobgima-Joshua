@@ -79,11 +79,44 @@ export default async function ProjectPage({ params }: Props) {
         {project.tagline}
       </p>
 
+      <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+        {project.kind && (
+          <div>
+            <dt className="text-zinc-500 dark:text-zinc-400">Project type</dt>
+            <dd className="font-semibold text-zinc-900 dark:text-zinc-100">{project.kind}</dd>
+          </div>
+        )}
+        <div>
+          <dt className="text-zinc-500 dark:text-zinc-400">My role</dt>
+          <dd className="font-semibold text-zinc-900 dark:text-zinc-100">{project.role}</dd>
+        </div>
+        <div>
+          <dt className="text-zinc-500 dark:text-zinc-400">Built with</dt>
+          <dd className="font-semibold text-zinc-900 dark:text-zinc-100">{project.techStack.join(", ")}</dd>
+        </div>
+      </dl>
+
+      {project.screenshot && (
+        <figure className="mt-10 overflow-hidden rounded-2xl border border-zinc-200 shadow-sm dark:border-zinc-800">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={project.screenshot}
+            alt={`Screenshot of the ${project.name} homepage, built by ${FULL_NAME}`}
+            width={1200}
+            height={750}
+            className="w-full"
+          />
+          <figcaption className="border-t border-zinc-200 bg-zinc-50 px-4 py-2 text-sm text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+            {project.name} homepage{project.liveUrl ? ` (${project.liveUrl.replace(/^https?:\/\//, "")})` : ""}
+          </figcaption>
+        </figure>
+      )}
+
       <Section title="Problem">
         <p>{project.problem}</p>
       </Section>
 
-      <Section title="What I built">
+      <Section title="My solution">
         <p>{project.whatIBuilt}</p>
       </Section>
 
@@ -116,7 +149,7 @@ export default async function ProjectPage({ params }: Props) {
         <p>{project.result}</p>
       </Section>
 
-      <Section title="Live link">
+      <Section title="Live demo">
         {project.liveUrl ? (
           <a
             href={project.liveUrl}

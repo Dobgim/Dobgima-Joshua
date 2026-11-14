@@ -28,9 +28,9 @@ export const faqItems: FaqItem[] = [
       "Dobgima Joshua Foncham works mainly with Next.js, TypeScript, React, Flutter, Firebase and Supabase (including PostgreSQL with Row-Level Security). He is currently expanding into AI automation.",
   },
   {
-    question: "Where did Dobgima Joshua Foncham study?",
+    question: "Where does Dobgima Joshua Foncham study?",
     answer:
-      "Dobgima Joshua Foncham earned a BTech in Software Engineering at Landmark Metropolitan University Institute (LMUI) in Buea, Cameroon. He completed secondary school at St Joseph Comprehensive College in Douala in 2023.",
+      "Dobgima Joshua Foncham is a final-year Software Engineering student, studying for a BTech at Landmark Metropolitan University Institute (LMUI) in Buea, Cameroon. He completed secondary school at St Joseph Comprehensive College in Douala in 2023.",
   },
   {
     question: "How can I hire Dobgima Joshua Foncham?",

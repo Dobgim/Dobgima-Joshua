@@ -51,6 +51,7 @@ const eyebrow =
 
 export default async function HomePage() {
   const reviews = await getApprovedReviews();
+  const [mainService, ...extraServices] = services;
   const latestPosts = getAllPosts().filter((p) => !p.draft).slice(0, 3);
   const featured = projects.filter((p) => p.featured);
   const others = projects.filter((p) => !p.featured);
@@ -83,9 +84,9 @@ export default async function HomePage() {
               className="reveal mx-auto mt-7 max-w-xl text-lg leading-relaxed text-zinc-600 sm:text-xl lg:mx-0 dark:text-zinc-400"
               style={d(160)}
             >
-              I build clean, fast and dependable web and mobile products for
-              businesses, from the first idea to a product your customers use
-              every day.
+              I help small and medium-sized businesses build professional
+              websites and web applications that attract customers and improve
+              their operations.
             </p>
 
             <div
@@ -198,33 +199,73 @@ export default async function HomePage() {
 
       {/* ───────── Services ───────── */}
       <section aria-labelledby="services-heading" data-reveal className="py-16 text-center">
-        <p className={eyebrow}>What I build and why</p>
+        <p className={eyebrow}>What I do</p>
         <h2 id="services-heading" className={`mt-3 ${sectionTitle}`}>
-          Websites, mobile apps and AI that move your business forward
+          Websites and web applications for growing businesses
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-          Every project starts with one question: what will help your customers
-          find you, use your service and come back?
+          My main focus is building websites and web apps that bring in customers
+          and make day-to-day work easier. Mobile apps and AI automation are
+          available when your business needs them.
         </p>
-        <div data-reveal-group className="mt-12 grid gap-6 text-left md:grid-cols-3">
-          {services.map((svc) => (
+
+        {/* Main offer */}
+        <article
+          data-reveal
+          className="lift mt-12 grid gap-8 rounded-2xl border border-zinc-200 bg-white p-8 text-left md:grid-cols-[1fr_1.1fr] md:p-10 dark:border-zinc-800 dark:bg-zinc-900"
+        >
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-800 dark:bg-sky-950 dark:text-sky-300">
+              Main service
+            </span>
+            <span className="mt-5 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-400">
+              <ServiceIcon icon={mainService.icon} />
+            </span>
+            <h3 className="mt-5 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">{mainService.name}</h3>
+            <p className="mt-3 leading-relaxed text-zinc-600 dark:text-zinc-400">{mainService.summary}</p>
+            <Link
+              href={`/services#${mainService.slug}`}
+              className="group mt-6 inline-flex items-center gap-1.5 font-semibold text-sky-700 dark:text-sky-400"
+            >
+              <span className="link-draw">See what you get</span>
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+          <ul className="space-y-3 self-center">
+            {mainService.deliverables.map((d) => (
+              <li key={d} className="flex gap-3 text-zinc-700 dark:text-zinc-300">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="mt-1 h-4 w-4 shrink-0 text-sky-700 dark:text-sky-400">
+                  <path d="M5 12.5l4.5 4.5L19 7.5" />
+                </svg>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        {/* Additional services */}
+        <p className="mt-12 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Also available</p>
+        <div data-reveal-group className="mt-5 grid gap-6 text-left md:grid-cols-2">
+          {extraServices.map((svc) => (
             <article
               key={svc.slug}
               data-reveal
-              className="lift flex flex-col rounded-2xl border border-zinc-200 bg-white p-7 dark:border-zinc-800 dark:bg-zinc-900"
+              className="lift flex gap-5 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-400">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
                 <ServiceIcon icon={svc.icon} />
               </span>
-              <h3 className="mt-5 text-lg font-semibold text-zinc-900 dark:text-zinc-50">{svc.name}</h3>
-              <p className="mt-2 flex-1 leading-relaxed text-zinc-600 dark:text-zinc-400">{svc.summary}</p>
-              <Link
-                href={`/services#${svc.slug}`}
-                className="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-700 dark:text-sky-400"
-              >
-                <span className="link-draw">Why it matters</span>
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              <div className="flex flex-col">
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">{svc.name}</h3>
+                <p className="mt-1.5 flex-1 leading-relaxed text-zinc-600 dark:text-zinc-400">{svc.summary}</p>
+                <Link
+                  href={`/services#${svc.slug}`}
+                  className="group mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-700 dark:text-sky-400"
+                >
+                  <span className="link-draw">Learn more</span>
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </div>
             </article>
           ))}
         </div>
@@ -239,7 +280,7 @@ export default async function HomePage() {
         <div className="mx-auto mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           <p>
             {FULL_NAME} is a Cameroonian software engineer working from{" "}
-            {LOCATIONS_LABEL}. He holds a {EDUCATION.degree} from {EDUCATION.school}{" "}
+            {LOCATIONS_LABEL}. He is a final-year Software Engineering student at {EDUCATION.school}{" "}
             and works as {EMPLOYER.role.replace("Remote", "remote")} at {EMPLOYER.name}, an
             Africa-to-Japan education and travel consultancy.
           </p>
@@ -289,15 +330,14 @@ export default async function HomePage() {
         </Link>
       </section>
 
-      {/* ───────── Reviews ───────── */}
+      {/* ───────── Reviews (shown only once real reviews are approved) ───────── */}
+      {reviews.length > 0 && (
       <section aria-labelledby="reviews-heading" data-reveal className="py-16 text-center">
         <p className={eyebrow}>Testimonials</p>
         <h2 id="reviews-heading" className={`mt-3 ${sectionTitle}`}>
           What clients say
         </h2>
-        {reviews.length > 0 ? (
-          <>
-            <div data-reveal-group className="mt-12 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
+                    <div data-reveal-group className="mt-12 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
               {reviews.slice(0, 3).map((review) => (
                 <ReviewCard key={review.id} review={review} />
               ))}
@@ -308,19 +348,8 @@ export default async function HomePage() {
             >
               Read all reviews <ArrowRight />
             </Link>
-          </>
-        ) : (
-          <p className="mx-auto mt-6 max-w-xl text-zinc-600 dark:text-zinc-400">
-            Client reviews will appear here. Worked with me?{" "}
-            <Link
-              href="/reviews#leave-a-review"
-              className="font-semibold text-sky-700 underline-offset-4 hover:underline dark:text-sky-400"
-            >
-              Leave a review
-            </Link>
-          </p>
-        )}
       </section>
+      )}
 
       {/* ───────── Latest articles ───────── */}
       {latestPosts.length > 0 && (

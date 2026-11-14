@@ -60,9 +60,10 @@ export default function ContactPage() {
         Contact {FULL_NAME}
       </h1>
       <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
-        I&apos;m available for freelance and remote work on web and mobile
-        projects, working from {LOCATIONS_LABEL}. The fastest way to reach me is
-        WhatsApp.
+        I help small and medium-sized businesses build professional websites and
+        web applications, and I also take on mobile app and AI automation projects.
+        I work from {LOCATIONS_LABEL} with clients anywhere. The fastest way to
+        reach me is WhatsApp.
       </p>
       <ul data-reveal-group className="mt-8 max-w-xl space-y-4">
         {channels.map((channel) => (

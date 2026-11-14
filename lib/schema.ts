@@ -74,16 +74,17 @@ export function personSchema(): JsonLd {
       name: LOCATION.countryName,
     },
     birthDate: BIRTH_DATE,
-    alumniOf: [
-      {
-        "@type": "CollegeOrUniversity",
-        name: EDUCATION.school,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: EDUCATION.city,
-          addressCountry: LOCATION.countryCode,
-        },
+    // Currently a final-year student at LMUI, so it is an affiliation, not alumniOf.
+    affiliation: {
+      "@type": "CollegeOrUniversity",
+      name: EDUCATION.school,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: EDUCATION.city,
+        addressCountry: LOCATION.countryCode,
       },
+    },
+    alumniOf: [
       {
         "@type": "HighSchool",
         name: SECONDARY_SCHOOL.name,

@@ -46,8 +46,8 @@ const journey = [
   },
   {
     label: "Education",
-    title: EDUCATION.degree,
-    body: `Studied software engineering at ${EDUCATION.school} in ${EDUCATION.city} and began turning ideas into working products.`,
+    title: "Final-year Software Engineering student",
+    body: `Studying for a ${EDUCATION.degree} at ${EDUCATION.school} in ${EDUCATION.city}, now in the final year, while turning ideas into working products.`,
   },
   {
     label: "Founder",
@@ -97,7 +97,7 @@ export default function AboutPage() {
     ["Born", BIRTH_DATE_DISPLAY],
     ["Profession", "Software Engineer"],
     ["Based in", LOCATIONS_LABEL],
-    ["Higher education", `${EDUCATION.degree}, ${EDUCATION.school}`],
+    ["Higher education", `${EDUCATION.degree} (final year), ${EDUCATION.school}`],
     ["Secondary school", `${SECONDARY_SCHOOL.name}, ${SECONDARY_SCHOOL.city} (${SECONDARY_SCHOOL.completed})`],
     ["Founder of", "MotorWise and Home237"],
     ["Works at", `${EMPLOYER.name} (${EMPLOYER.role.replace("Remote", "remote")})`],
@@ -189,9 +189,9 @@ export default function AboutPage() {
             <p>
               In {SECONDARY_SCHOOL.completed} I completed secondary school at{" "}
               {SECONDARY_SCHOOL.name} in {SECONDARY_SCHOOL.city}, and I set out to
-              pursue my dream of building software. I studied software
-              engineering at {EDUCATION.school} in {EDUCATION.city}, where I earned
-              my {EDUCATION.degree}, and began turning ideas into real products.
+              pursue my dream of building software. I am now in my final year of a
+              {" "}{EDUCATION.degree} at {EDUCATION.school} in {EDUCATION.city}, and
+              alongside my studies I have been turning ideas into real products.
             </p>
             <p>
               That path led me to found{" "}

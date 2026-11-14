@@ -20,7 +20,7 @@ export const services: Service[] = [
     slug: "websites",
     name: "Websites and web applications",
     summary:
-      "Fast, professional websites and web apps that help customers find you, trust you and buy from you.",
+      "Professional websites and web applications that attract customers, build trust and make your day-to-day operations easier.",
     answer:
       "A website gives a business a place it fully owns online, where customers can find it on Google and in AI assistants, check that it is trustworthy, and contact it, book or buy at any hour.",
     why: [

@@ -40,13 +40,13 @@ export default function ServicesPage() {
       <header className="max-w-3xl">
         <p className="text-base font-semibold text-sky-700 dark:text-sky-400">Services</p>
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-950 sm:text-5xl dark:text-white">
-          What I build, and why it matters for your business
+          Websites and web applications for growing businesses
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-          I build three things: websites that help customers find and trust you,
-          mobile apps that keep you on their phones, and AI automation that saves
-          your team time. Each one solves a real business problem. Here is why,
-          and exactly what you get.
+          I help small and medium-sized businesses build professional websites
+          and web applications that attract customers and improve their
+          operations. That is my main focus. When your business needs more, I also
+          build mobile apps and practical AI automation.
         </p>
         <nav aria-label="Services on this page" className="mt-8 flex flex-wrap gap-3">
           {services.map((svc) => (
@@ -75,7 +75,7 @@ export default function ServicesPage() {
               <ServiceIcon icon={svc.icon} />
             </span>
             <div>
-              <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">0{i + 1}</p>
+              <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">{i === 0 ? "Main service" : "Also available"}</p>
               <h2 id={`${svc.slug}-heading`} className="text-3xl font-bold tracking-tight text-zinc-950 dark:text-white">
                 {svc.name}
               </h2>
