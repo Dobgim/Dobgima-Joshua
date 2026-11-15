@@ -15,7 +15,7 @@ import {
   absoluteUrl,
 } from "./config";
 import { faqItems } from "./faq";
-import { projects } from "./projects";
+import { getProjects } from "./projects";
 import { services } from "./services";
 import { servicesFaq } from "./services-faq";
 
@@ -62,7 +62,8 @@ function keyPages(): string[] {
 }
 
 /** Short summary for /llms.txt. */
-export function llmsTxt(): string {
+export async function llmsTxt(): Promise<string> {
+  const projects = await getProjects();
   return [
     ...header(),
     "",
@@ -84,7 +85,8 @@ export function llmsTxt(): string {
 }
 
 /** Full content for /llms-full.txt. */
-export function llmsFullTxt(): string {
+export async function llmsFullTxt(): Promise<string> {
+  const projects = await getProjects();
   return [
     ...header(),
     "",

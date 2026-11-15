@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/config";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 import { getAllPosts } from "@/lib/blog";
 import { getApprovedReviews } from "@/lib/reviews";
+
+export const revalidate = 60;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const hasReviews = (await getApprovedReviews()).length > 0;
@@ -19,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absoluteUrl("/contact"), lastModified: now, changeFrequency: "yearly", priority: 0.6 },
   ];
 
+  const projects = await getProjects();
   const projectPages: MetadataRoute.Sitemap = projects.map((p) => ({
     url: absoluteUrl(`/projects/${p.slug}`),
     lastModified: now,

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { getSupabaseBrowser } from "@/lib/supabase-browser";
+import ProjectsPanel from "./ProjectsPanel";
 
 type Status = "pending" | "approved" | "rejected";
 
@@ -151,11 +152,11 @@ function LoginForm() {
 /* ───────────────────────── Shell: Reviews | Enquiries ───────────────────────── */
 
 function AdminShell({ session }: { session: Session }) {
-  const [section, setSection] = useState<"enquiries" | "reviews">("enquiries");
+  const [section, setSection] = useState<"enquiries" | "projects" | "reviews">("enquiries");
   return (
     <div>
       <nav aria-label="Admin sections" className="mb-6 inline-flex rounded-lg bg-zinc-100 p-1 text-sm font-semibold dark:bg-zinc-800">
-        {(["enquiries", "reviews"] as const).map((key) => (
+        {(["enquiries", "projects", "reviews"] as const).map((key) => (
           <button
             key={key}
             onClick={() => setSection(key)}
@@ -166,7 +167,13 @@ function AdminShell({ session }: { session: Session }) {
           </button>
         ))}
       </nav>
-      {section === "reviews" ? <Dashboard session={session} /> : <EnquiriesPanel session={session} />}
+      {section === "reviews" ? (
+        <Dashboard session={session} />
+      ) : section === "projects" ? (
+        <ProjectsPanel session={session} />
+      ) : (
+        <EnquiriesPanel session={session} />
+      )}
     </div>
   );
 }

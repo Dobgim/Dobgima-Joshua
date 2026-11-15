@@ -5,7 +5,7 @@ import ProjectCard from "@/components/ProjectCard";
 import JsonLd from "@/components/JsonLd";
 import { projectListSchema, webPageSchema } from "@/lib/schema";
 import { FULL_NAME } from "@/lib/config";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 
 const description = `Projects by ${FULL_NAME}: MotorWise, Home237, Merit Leaders, FoodieExpress, Cushman Golf Carts SA and more, with case studies.`;
 
@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   openGraph: { title: `Projects by ${FULL_NAME}`, description, url: "/projects" },
 };
 
-export default function ProjectsPage() {
+export const revalidate = 60;
+
+export default async function ProjectsPage() {
+  const projects = await getProjects();
   return (
     <>
       <JsonLd data={[webPageSchema({ type: "CollectionPage", path: "/projects", name: `Projects by ${FULL_NAME}`, description }), projectListSchema(projects)]} />

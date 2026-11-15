@@ -23,289 +23,77 @@ export interface Project {
   gallery?: { src: string; caption: string }[];
 }
 
-export type ProjectKind = "Own product" | "Co-founded startup" | "Client project" | "Demo";
+export const PROJECT_KINDS = ["Own product", "Co-founded startup", "Client project", "Personal project", "Demo"] as const;
+export type ProjectKind = (typeof PROJECT_KINDS)[number];
 
-export const projects: Project[] = [
-  {
-    slug: "motorwise",
-    gallery: [
-      { src: "/projects/motorwise--demo.webp", caption: "Live demo: fleet dashboard with vehicles, repair costs and upcoming maintenance" },
-    ],
-    screenshot: "/projects/motorwise.webp",
-    kind: "Own product",
-    name: "MotorWise",
-    tagline: "Fleet maintenance platform for vehicle operators.",
-    role: "Founder",
-    liveUrl: "https://www.motorwise.co",
-    featured: true,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "BusinessApplication",
-    techStack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL"],
-    problem:
-      "Fleet operators struggle to keep track of vehicle maintenance across many vehicles and drivers, which leads to missed servicing and avoidable breakdowns.",
-    whatIBuilt:
-      "MotorWise, an AI vehicle maintenance copilot delivered as a multi-tenant SaaS for fleet operators. Each operator's data is isolated at the database level using Supabase PostgreSQL with Row-Level Security.",
-    myRole:
-      "Founder. Dobgima Joshua Foncham designed and built the product, including the multi-tenant data model and the application itself.",
-    keyFeatures: [
-      "Multi-tenant SaaS architecture for fleet operators",
-      "Tenant isolation with Supabase PostgreSQL Row-Level Security (RLS)",
-      "AI-assisted vehicle maintenance guidance",
-    ],
-    result:
-      "Live at motorwise.co and open for sign-ups, with a free plan for up to 2 vehicles. Available in English and French.",
-  },
-  {
-    slug: "merit-leaders",
-    screenshot: "/projects/merit-leaders.webp",
-    name: "Merit Leaders",
-    tagline: "Scholarship and fellowship platform for international students.",
-    role: "Developer",
-    liveUrl: "https://www.meritleaders.com",
-    featured: true,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "EducationalApplication",
-    techStack: ["React", "Vite", "Supabase"],
-    problem:
-      "Students looking for fully funded scholarships abroad face scattered information and complex applications, and often lack guidance on statements of purpose, visas and interviews.",
-    whatIBuilt:
-      "Merit Leaders, a platform that helps undergraduate, graduate, postgraduate and international students find, apply for and win fully funded scholarships worldwide, with expert application, SOP, visa and interview support.",
-    myRole:
-      "Dobgima Joshua Foncham built the Merit Leaders web platform.",
-    keyFeatures: [
-      "Scholarship and fellowship matching for students at every level",
-      "End-to-end application support: SOP, visa and interview preparation",
-      "Supabase backend",
-    ],
-    result: "Live at meritleaders.com.",
-  },
-  {
-    slug: "home237",
-    screenshot: "/projects/home237.webp",
-    kind: "Own product",
-    name: "Home237",
-    tagline: "Property rental platform for Cameroon.",
-    role: "Founder",
-    liveUrl: "https://home237.com",
-    featured: true,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "LifestyleApplication",
-    techStack: ["Next.js", "TypeScript", "Supabase"],
-    problem:
-      "Finding rental property in Cameroon is largely informal and offline, making it hard for renters to discover listings and for landlords to reach tenants.",
-    whatIBuilt:
-      "Home237, a property rental platform for Cameroon where listings can be published and browsed online.",
-    myRole:
-      "Founder. Dobgima Joshua Foncham founded Home237 and designed, built and deployed the platform.",
-    keyFeatures: [
-      "Online property listings for the Cameroonian market",
-      "Deployed and running in production",
-    ],
-    result: "Website live at home237.com, with Android and iOS apps announced as coming soon.",
-  },
-  {
-    slug: "yadims-fabrics",
-    gallery: [
-      { src: "/projects/yadims-fabrics--shop.webp", caption: "Fabric shop with filters by category and collection" },
-    ],
-    screenshot: "/projects/yadims-fabrics.webp",
-    name: "YADIMS Fabrics & Seams",
-    tagline: "E-commerce website for a fabric and lace business.",
-    role: "Developer",
-    liveUrl: "https://yadimsfabrics.com",
-    featured: true,
-    schemaType: "CreativeWork",
-    techStack: ["Next.js", "TypeScript"],
-    problem:
-      "The fabric and lace business needed an online presence to showcase products and reach customers beyond word of mouth.",
-    whatIBuilt:
-      "The website for YADIMS Fabrics & Seams, a fabric and lace business, showcasing its products online.",
-    myRole: "Dobgima Joshua Foncham designed and developed the website.",
-    keyFeatures: [
-      "Product showcase for fabrics and lace",
-      "Professional business website, designed and built end to end",
-    ],
-    result: "Live at yadimsfabrics.com.",
-  },
-  {
-    slug: "foodieexpress",
-    screenshot: "/projects/foodieexpress.webp",
-    name: "FoodieExpress",
-    tagline: "Online food ordering and delivery store.",
-    role: "Developer",
-    liveUrl: "https://foodieexpress-react.vercel.app",
-    featured: false,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "ShoppingApplication",
-    techStack: ["React", "Framer Motion"],
-    problem:
-      "Restaurants and food vendors need a simple way for hungry customers to browse a menu and order online, on any device.",
-    whatIBuilt:
-      "FoodieExpress, a food ordering website where customers browse meals, fast food, drinks and desserts and place orders for delivery.",
-    myRole:
-      "Dobgima Joshua Foncham built the FoodieExpress storefront in React, including the menu catalogue, cart experience and animated interface.",
-    keyFeatures: [
-      "Menu catalogue for meals, fast food, drinks and desserts",
-      "Shopping cart and ordering flow",
-      "Smooth, mobile-first animated interface with Framer Motion",
-    ],
-    result: "Live on Vercel.",
-  },
-  {
-    slug: "cushman-golf-carts",
-    gallery: [
-      { src: "/projects/cushman-golf-carts--inventory.webp", caption: "Inventory page with search and category filters" },
-      { src: "/projects/cushman-golf-carts--brand.webp", caption: "Brand landing page targeting Club Car searches in South Africa" },
-    ],
-    screenshot: "/projects/cushman-golf-carts.webp",
-    kind: "Client project",
-    name: "Cushman Golf Carts SA",
-    tagline: "Golf cart sales, hire and parts website for a South African dealer.",
-    role: "Developer, SEO & maintenance",
-    liveUrl: "https://cushmancarts.co.za",
-    featured: false,
-    schemaType: "CreativeWork",
-    techStack: ["React", "PHP", "Hostinger", "SEO"],
-    problem:
-      "A golf cart dealer in Bloemfontein needed a professional online showroom to reach buyers and hire customers across South Africa, and to turn visitors into enquiries.",
-    whatIBuilt:
-      "The website for Cushman Golf Carts SA, presenting new and used electric and petrol golf carts for sale and hire, plus spare parts, batteries, repairs and nationwide delivery.",
-    myRole:
-      "Dobgima Joshua Foncham designed and developed the website, deployed it on Hostinger, and runs its SEO and ongoing maintenance, including the enquiry form that delivers customer messages by email.",
-    keyFeatures: [
-      "Showroom for new and used electric and petrol golf carts",
-      "Sale and hire options, spare parts, batteries and repairs",
-      "Quote and financing enquiries through a PHP contact form with email delivery",
-      "WhatsApp contact and nationwide delivery information",
-      "SEO for South African search: page titles, descriptions and structured content for golf cart sales and hire",
-      "Ongoing maintenance: updates, fixes and keeping the site fast and online",
-    ],
-    result: "Live at cushmancarts.co.za, with SEO and maintenance ongoing.",
-  },
-  {
-    slug: "best-golf-carts-usa",
-    gallery: [
-      { src: "/projects/best-golf-carts-usa--shop.webp", caption: "Shop page with category filters, sorting and product grid" },
-      { src: "/projects/best-golf-carts-usa--product.webp", caption: "Product page with specifications, price and enquiry actions" },
-    ],
-    screenshot: "/projects/best-golf-carts-usa.webp",
-    kind: "Client project",
-    name: "Best Golf Carts USA",
-    tagline: "E-commerce store for golf cart parts and accessories across the USA.",
-    role: "Developer",
-    liveUrl: "https://bestgolfcartsusa.com",
-    featured: false,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "ShoppingApplication",
-    techStack: ["React", "Vite", "Supabase", "Stripe", "Hostinger"],
-    problem:
-      "Golf cart owners need an easy way to find the right parts and upgrades for their make and model, and buy them online with fast delivery anywhere in the United States.",
-    whatIBuilt:
-      "Best Golf Carts USA, an online store for golf cart parts and accessories for Club Car, EZGO and Yamaha carts, from brakes and lift kits to lithium batteries, motors, wheels and tires.",
-    myRole:
-      "Dobgima Joshua Foncham designed and developed the store: the product catalogue, search, cart, checkout and customer features, backed by Supabase and deployed on Hostinger.",
-    keyFeatures: [
-      "Product catalogue with categories for parts, accessories, tires and wheels",
-      "Product search, wishlist and shopping cart",
-      "Secure card checkout with Stripe",
-      "Customer accounts and order tracking by order ID",
-      "Blog and search-friendly pages for golf cart parts",
-    ],
-    result: "Live at bestgolfcartsusa.com.",
-  },
-  {
-    slug: "logistics-tracking-platform",
-    screenshot: "/projects/logistics-tracking-platform.webp",
-    name: "Logistics Tracking Platform",
-    tagline: "Logistics websites with live shipment tracking, quotes and an admin dashboard.",
-    role: "Developer",
-    liveUrl: null,
-    liveUrlNote: "Built for logistics businesses. A walkthrough or demo is available on request.",
-    featured: false,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "BusinessApplication",
-    techStack: ["React", "Vite", "Tailwind CSS", "Supabase", "WordPress", "WooCommerce"],
-    problem:
-      "Logistics and freight businesses need customers to track shipments on their own, request quotes and see delivery progress, while staff need one place to create shipments and keep every status up to date.",
-    whatIBuilt:
-      "Logistics platforms with a public tracking page, a route map showing each shipment's journey, quote and fee requests, and an admin dashboard for managing shipments. Built both as a custom React and Supabase application and as a WordPress and WooCommerce site.",
-    myRole:
-      "Dobgima Joshua Foncham designed and developed the platforms end to end: the customer-facing website, the tracking experience, the admin dashboard and the database.",
-    keyFeatures: [
-      "Public tracking by shipment code, with a route map of the journey",
-      "Status workflow: Pending, Picked Up, In Transit, Out for Delivery, Delivered and On Hold",
-      "Admin dashboard to create shipments and update status, location and details",
-      "Printable PDF shipment invoices with barcodes and QR codes",
-      "Quote requests, fee calculation and service pages for freight, warehousing and e-commerce fulfilment",
-      "Supabase database for shipments and settings",
-    ],
-    result: "Delivered for logistics businesses; client sites are not linked here.",
-  },
-  {
-    slug: "welearn",
-    screenshot: "/projects/welearn.webp",
-    kind: "Co-founded startup",
-    name: "WeLearn",
-    tagline: "EdTech startup for Cameroon.",
-    role: "Co-founder",
-    liveUrl: "https://welearncm.org",
-    featured: false,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "EducationalApplication",
-    techStack: ["Next.js", "TypeScript"],
-    problem:
-      "Students in Cameroon need better access to learning resources and tools online.",
-    whatIBuilt:
-      "WeLearn, an EdTech startup that Dobgima Joshua Foncham is co-building with a colleague.",
-    myRole: "Co-founder and engineer, building the product with a colleague.",
-    keyFeatures: ["EdTech platform in active development"],
-    result:
-      "In active development at welearncm.org.",
-  },
-  {
-    slug: "school-management-system",
-    name: "School Management System",
-    tagline: "Management software for schools in Cameroon.",
-    role: "Developer",
-    liveUrl: null,
-    liveUrlNote: "Built for schools in Cameroon. A walkthrough or demo is available on request.",
-    featured: false,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "BusinessApplication",
-    techStack: ["React", "Node.js", "PostgreSQL"],
-    problem:
-      "Schools in Cameroon often manage students, grades and administration on paper or in spreadsheets, which is slow and error-prone.",
-    whatIBuilt:
-      "A school management system built by Dobgima Joshua Foncham for schools in Cameroon.",
-    myRole: "Designed and developed the system.",
-    keyFeatures: [
-      "Student and class administration",
-      "Built for the needs of schools in Cameroon",
-    ],
-    result: "Built for schools in Cameroon; a demo is available on request.",
-  },
-  {
-    slug: "booking-system",
-    kind: "Demo",
-    name: "Booking System (demo)",
-    tagline: "A booking system demo application.",
-    role: "Developer",
-    liveUrl: "https://booking-system-umber-six.vercel.app",
-    featured: false,
-    schemaType: "SoftwareApplication",
-    applicationCategory: "BusinessApplication",
-    techStack: ["Next.js", "TypeScript"],
-    problem:
-      "A demonstration of booking and reservation flows, built to show how a booking product can work end to end.",
-    whatIBuilt: "A booking system demo deployed on Vercel.",
-    myRole: "Dobgima Joshua Foncham designed and built the demo.",
-    keyFeatures: ["End-to-end booking flow demo", "Deployed on Vercel"],
-    result: "Live demo on Vercel.",
-  },
-];
+import { SUPABASE_URL, supabaseHeaders } from "./supabase-public";
+import { seedProjects } from "./projects-seed";
 
-export function getProject(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+/** Row shape of public.projects (snake_case columns). */
+export interface ProjectRow {
+  slug: string;
+  name: string;
+  tagline: string;
+  role: string;
+  kind: ProjectKind | null;
+  live_url: string | null;
+  live_url_note: string | null;
+  featured: boolean;
+  published: boolean;
+  sort_order: number;
+  schema_type: "SoftwareApplication" | "CreativeWork";
+  application_category: string | null;
+  tech_stack: string[];
+  problem: string;
+  what_i_built: string;
+  my_role: string;
+  key_features: string[];
+  result: string;
+  screenshot: string | null;
+  gallery: { src: string; caption: string }[];
 }
 
-export const featuredProjects = projects.filter((p) => p.featured);
+export function rowToProject(r: ProjectRow): Project {
+  return {
+    slug: r.slug,
+    name: r.name,
+    tagline: r.tagline,
+    role: r.role,
+    liveUrl: r.live_url || null,
+    liveUrlNote: r.live_url_note || undefined,
+    featured: r.featured,
+    schemaType: r.schema_type,
+    applicationCategory: r.application_category || undefined,
+    techStack: r.tech_stack ?? [],
+    problem: r.problem,
+    whatIBuilt: r.what_i_built,
+    myRole: r.my_role,
+    keyFeatures: r.key_features ?? [],
+    result: r.result,
+    kind: r.kind ?? undefined,
+    screenshot: r.screenshot || undefined,
+    gallery: r.gallery?.length ? r.gallery : undefined,
+  };
+}
+
+/** Pages refresh within this many seconds; admin changes refresh instantly. */
+export const PROJECTS_REVALIDATE_SECONDS = 60;
+
+/** Published projects in display order, from Supabase (managed in /admin). */
+export async function getProjects(): Promise<Project[]> {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/projects?select=*&published=eq.true&order=sort_order.asc,created_at.asc`,
+      { headers: supabaseHeaders(), next: { revalidate: PROJECTS_REVALIDATE_SECONDS, tags: ["projects"] } },
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return ((await res.json()) as ProjectRow[]).map(rowToProject);
+  } catch {
+    // The database is the source of truth; the snapshot only keeps builds working offline.
+    return seedProjects;
+  }
+}
+
+export async function getProject(slug: string): Promise<Project | undefined> {
+  return (await getProjects()).find((p) => p.slug === slug);
+}

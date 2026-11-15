@@ -4,22 +4,23 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { FULL_NAME } from "@/lib/config";
-import { getProject, projects } from "@/lib/projects";
+import { getProject, getProjects } from "@/lib/projects";
 import { projectSchema } from "@/lib/schema";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const revalidate = 60;
 
-export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  return (await getProjects()).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
   if (!project) return {};
   const description = `${project.name}: ${project.tagline} Case study by ${FULL_NAME}.`;
   return {
@@ -55,7 +56,7 @@ function Section({
 
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
   if (!project) notFound();
 
   return (

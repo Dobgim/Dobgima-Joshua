@@ -18,7 +18,7 @@ import {
   SITE_UPDATED,
   WHATSAPP_URL,
 } from "@/lib/config";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 import { services } from "@/lib/services";
 import { profilePageSchema } from "@/lib/schema";
 
@@ -90,7 +90,10 @@ const principles = [
 const heading = "text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-white";
 const eyebrow = "text-sm font-semibold uppercase tracking-[0.18em] text-sky-700 dark:text-sky-400";
 
-export default function AboutPage() {
+export const revalidate = 60;
+
+export default async function AboutPage() {
+  const projects = await getProjects();
   const facts: [string, string][] = [
     ["Full name", FULL_NAME],
     ["Nationality", "Cameroonian"],

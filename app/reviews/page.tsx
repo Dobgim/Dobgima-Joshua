@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ReviewCard, { Stars } from "@/components/ReviewCard";
 import ReviewForm from "@/components/ReviewForm";
 import { FULL_NAME } from "@/lib/config";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 import { getApprovedReviews } from "@/lib/reviews";
 
 export const revalidate = 60;
@@ -24,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ReviewsPage() {
+  const projects = await getProjects();
   const reviews = await getApprovedReviews();
   const average =
     reviews.length > 0

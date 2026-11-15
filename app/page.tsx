@@ -20,7 +20,7 @@ import {
   LOCATIONS_LABEL,
   WHATSAPP_URL,
 } from "@/lib/config";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 import { getApprovedReviews } from "@/lib/reviews";
 import { personSchema, webSiteSchema } from "@/lib/schema";
 
@@ -86,6 +86,7 @@ export default async function HomePage() {
   const reviews = await getApprovedReviews();
   const [mainService, ...extraServices] = services;
   const latestPosts = getAllPosts().filter((p) => !p.draft).slice(0, 3);
+  const projects = await getProjects();
   const featured = projects.filter((p) => p.featured);
   const others = projects.filter((p) => !p.featured);
 
